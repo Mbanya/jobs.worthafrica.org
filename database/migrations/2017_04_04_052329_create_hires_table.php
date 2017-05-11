@@ -25,10 +25,12 @@ class CreateHiresTable extends Migration
             $table->longText('Qualification_Description')->nullable();
             $table->string('experience');
             $table->longText('Responsibilities')->nullable();
-            $table->longText('skills')->nullable;
+            $table->longText('skills')->nullable();
             $table->integer('minSal')->nullable();
             $table->integer('maxSal')->nullable();
             $table->date('start_date');
+            $table->string('location');
+            $table->string('job_type');
             $table->timestamps();
 
             $table->index('user_id');

@@ -1,11 +1,14 @@
 @extends('layouts.layout')
-
+<title>Home</title>
 @section('assets')
-    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
-    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
-
+    <link class="main-stylesheet" href="{{asset('css/pages1.css')}}" rel="stylesheet" type="text/css"/>
+    <link class="main-stylesheet" href="{{asset('css/pages-icons.css')}}" rel="stylesheet" type="text/css"/>
+    <link class="main-stylesheet" href="{{asset('css/swiper.css')}}" rel="stylesheet" type="text/css"/>
+    <link class="main-stylesheet" href="{{asset('css/pace-theme-flash.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
+
 @section('navigation')
+
     @endsection
 @section('cover')
 <!-- ========== Hero Cover ========== -->
@@ -18,19 +21,40 @@
 
                         <!-- Heading -->
                         <div class="col-md-5 heading-wrapper wow fadeInLeft" data-wow-duration="1.5s">
-                            <h1 class="lead">Reach the top</h1>
-                            <h4 class="h-alt subheading">Catchy Subheading</h4>
-                            <p style="color: white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita neque praesentium eum earum aperiam quas impedit commodi hic, architecto, error, quae. Commodi, similique! Voluptatum iste necessitatibus eum aut temporibus, alias!</p>
+                            <h1 class="lead">Job Filter</h1>
+                            <h4 class="h-alt subheading">Create Value. Save Money</h4>
+                            <p style="color: white">JOBS FILTER is a total break through! In 3 simple steps
+                                JOB FILTER app guarantees 80% savings of what it traditionally costs
+                                HR teams to filter hundreds and thousands of job applications you receive
+                                when you advertise for a job. </p>
                             <a href="#How it works" class="cta-btn">Learn more</a>
                         </div>
 
                         <!-- Call to action Form -->
                         <div class="col-md-offset-3 col-md-4 form-wrapper wow fadeInRight" data-wow-duration="1.5s">
-                            <form action="" class="form-group">
-                                <input class="form-control" type="text" placeholder="Full Name">
-                                <input class="form-control" type="password" placeholder="Password">
-                                <input class="form-control" type="email" placeholder="Email">
-                                <input class="btn-ghost-light" type="submit" value="Get Started">
+                            <form action="{{route('jflogin')}}" method="POST" role="form" class="form-group">
+                                @if(session('error'))
+                                    <div class="alert alert-danger" >
+                                        {{session('error')}}
+                                    </div>
+                                @endif
+                                {{csrf_field()}}
+                                    <input type="email"  name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter your email" required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+                        <!-- Password -->
+                            <input type="password" name="password"  class="form-control" placeholder="Enter your password" required autofocus>
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+
+                            <input class="btn-block btn-ghost-light" type="submit" value="Login">
                             </form>
                         </div>
 
@@ -39,11 +63,6 @@
             </div><!-- / .hero-content -->
         </div><!-- / .hero-wrapper -->
 
-        <!-- Scroller -->
-        <a href="#how" class="scroller">
-            <span class="scroller-text">scroll down</span>
-            <span class="linea-basic-magic-mouse"></span>
-        </a>
 
     </div><!-- / .bg-overlay -->
 </div><!-- / .main-op -->
@@ -52,56 +71,44 @@
 
 <!-- ========== Features ========== -->
 @section('content')
-    <div id="how" class="container-fluid ft-layout-50">
-        <div class="row">
+    <section id="How it works" class="container ft-steps-numbers">
+        <div class="row section">
+
+            <header class="sec-heading ws-s">
+                <h2> How Job-Filter Works</h2>
+                <span class="subheading">It only takes 3 simple steps</span>
+            </header>
 
             <!-- Step 1 -->
-            <div class="ft-item">
-                <div class="col-lg-6 ft-img-wrapper">
-                    <img src="{{url('/images/landing-ft-1.jpg')}}" alt="Features Image">
-                </div>
-                <div class="col-lg-6 ft-content-wrapper">
-                    <h5>Step 1</h5>
-                    <h6 class="h-alt">Lorem ipsum dolor sit amet</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <button class="btn-ghost">Call to Action</button>
-                </div>
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">01</span>
+                <h4>SUBSCRIBE  <br>
+                    FOR FREE</h4>
+                <p>Sign up today for free<br/> and get started on finding the right fit</p>
             </div>
 
             <!-- Step 2 -->
-            <div class="ft-item">
-                <div class="col-lg-6 ft-content-wrapper">
-                    <h5>Step Two</h5>
-                    <h6 class="h-alt">Lorem ipsum dolor sit amet</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <button class="btn-ghost">Call to Action</button>
-                </div>
-                <div class="col-lg-6 ft-img-wrapper">
-                    <img src="{{ url('/images/landing-ft-2.jpg')}}" alt="Features Image">
-                </div>
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">02</span>
+                <h4>FILL IN OUR<br>
+                    JOB FILTER FORM</h4>
+                <p>Indicate your requirements within the form and submit it to us</p>
             </div>
 
             <!-- Step 3 -->
-            <div class="ft-item">
-                <div class="col-lg-6 ft-img-wrapper">
-                    <img src="{{ url('/images/landing-ft-2.jpg')}}" alt="Features Image">
-                </div>
-                <div class="col-lg-6 ft-content-wrapper">
-                    <h5>Step Three</h5>
-                    <h6 class="h-alt">Lorem ipsum dolor sit amet</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <button class="btn-ghost">Call to Action</button>
-                </div>
-
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">03</span>
+                <h4>CREATE YOUR<br>
+                   JOB RECIEVING TRY</h4>
+                <p>Upon subbmission we give you a link to embed together with your job advert</p>
             </div>
 
-        </div>
-    </div>
+        </div><!-- / .row -->
+    </section><!-- / .container -->
 
-    <!--End FAQ's -->
 
     <!-- ========== FAQS ========== -->
-    <section class="p-t-55 bg-success-light scroll-x-hidden" data-pages-bg-image="{{ url('/images/work.jpg')}}" data-pages="parallax">
+    <section class="p-t-55 bg-success-light scroll-x-hidden" data-pages-bg-image="{{url('../images/284_Samburu-Plains_2560x1440.jpg')}}" data-pages="parallax">
         <div class="container p-b-100" id="faq">
             <h5 class="block-title text-white ">FAQ'S</h5>
             <div class="row p-b-65 p-t-55">
@@ -114,38 +121,38 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
                                 </div>
                             </div>
-                            <h3 class="text-white no-margin lh-large">200%</h3>
-                            <p class="text-white fs-12 font-arial">Smoother
+                            <h3 class="text-white no-margin lh-large">100%</h3>
+                            <p class="text-white fs-12 font-arial">Questions Answered
                             </p>
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
                                 </div>
                             </div>
-                            <h3 class="text-white no-margin lh-large">23%</h3>
-                            <p class="text-white fs-12 font-arial">Lighter
+                            <h3 class="text-white no-margin lh-large">24hrs</h3>
+                            <p class="text-white fs-12 font-arial">To reply to any inquiry
                             </p>
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
                                 </div>
                             </div>
-                            <h3 class="text-white no-margin lh-large">12.23ma</h3>
-                            <p class="text-white fs-12 font-arial">Micro Awesomness
+                            <h3 class="text-white no-margin lh-large">10hrs</h3>
+                            <p class="text-white fs-12 font-arial">Dedicated to Customer service each week
                             </p>
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
                                 </div>
                             </div>
-                            <h3 class="text-white no-margin lh-large">12.23ma</h3>
-                            <p class="text-white fs-12 font-arial">Micro Awesomness
+                            <h3 class="text-white no-margin lh-large">100%</h3>
+                            <p class="text-white fs-12 font-arial">Easy to use and understand
                             </p>
                         </div>
                     </div>
@@ -161,56 +168,68 @@
 
                 <div class="swiper-slide">
                     <div class="container text-left">
-                        <h5 class="semi-bold m-b-30">- Richard Hall</h5>
-                        <h3 class="m-b-30">“Pages is the right balance of proven solution and true partner. We choose vendors that we can partner and scale with.”</h3>
-                        <h6 class="block-title hint-text fs-12">DIRECTOR OF REVENUE OPERATIONS AT REVOX</h6>
+                        <h5 class="semi-bold m-b-30">Q: What will it cost us to subscribe to JOB FILTER?</h5>
+                        <h5 class="m-b-30">“A: JOB FILTER is amazingly so cheap to believe. Subscription if
+                            for free and it costs an average of only US$99per job. The popular pricing choice
+                            among our clients is a premium option which involves an annual subscription
+                            of US$499 only. Under premium option you have up to 6 jobs to post and shortlist
+                            via the JOB FILTER app.”</h5>
                     </div>
                 </div>
 
 
                 <div class="swiper-slide">
                     <div class="container text-left">
-                        <h5 class="semi-bold m-b-30">- John Smith</h5>
-                        <h3 class="m-b-30">“Pages is the right balance of proven solution and true partner. We choose vendors that we can partner and scale with.”</h3>
-                        <h6 class="block-title hint-text fs-12">CEO & Co-founder AT REVOX</h6>
+                        <h5 class="semi-bold m-b-30">Q: How exactly does JOB FILTER app work?</h5>
+                        <h5 class="m-b-30">“JOB FILTER uses our advanced innovation technology to
+                            shortlist best candidates within minutes. In 3 simple steps you are
+                            ready to enjoy amazing benefits of JOB FILTER! 1) Create an account; 2)
+                            generate job code for every job you want to advertise; 3) receive shortlist
+                            for best candidates as within 48 hours of closing all applications.
+                            Once you subscribe and post a job you track in real time as the shortlists
+                            are formed based on the selection criteria you have provided us”</h5>
                     </div>
                 </div>
 
 
                 <div class="swiper-slide">
                     <div class="container text-left">
-                        <h5 class="semi-bold m-b-30">- David Nester</h5>
-                        <h3 class="m-b-30">“Pages is the right balance of proven solution and true partner. We choose vendors that we can partner and scale with.”</h3>
-                        <h6 class="block-title hint-text fs-12">Creative Director & UI Specialist AT REVOX</h6>
+                        <h5 class="semi-bold m-b-30">How accurate are the results we get from JOBS FILTER app?</h5>
+                        <h5 class="m-b-30">“99% accurate! We have been honoured to be a pace setter in
+                            developing such innovative and advanced technology solution.
+                            To ensure absoluteness on our results we always engage our HR advisory
+                            team to do final quality assurance checks on the shortlists to guarantee you the results.
+                            ”</h5>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="container text-left">
+                        <h5 class="semi-bold m-b-30">How safe and secure is it for us as a client to use JOBS FILTER app?</h5>
+                        <h5 class="m-b-30">“JOB FILTER uses advanced encryption and storage technology to
+                            ensure all data and information received is safe and secure. Our privacy and
+                            confidentiality policy is top priority and ensures that information and data
+                            of all job applications and our clients is securely safe.
+                            ”</h5>
                     </div>
                 </div>
 
             </div>
+
 
             <div class="container">
                 <div class="swiper-pagination relative pull-left"></div>
             </div>
         </div>
-    </section>
 
+    </section>
     <!-- ========== Footer ========== -->
-    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker ">
+    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker  ">
 
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-xs-12 xs-m-b-40">
-                    <p class="" style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
-                </div>
-                <div class="col-sm-2 col-xs-6 xs-m-b-20">
-                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Our Company </h6>
-                    <ul class="no-style">
-                        <li class="m-b-5 no-padding"><a href="http://worthafrica.org" target="_blank" class="link text-white ">Worth Africa</a></li>
-                        <li class="m-b-5 no-padding"><a href="http://www.worthafrica.org/worth-index/" target="_blank" class="link text-white">Worth Index</a></li>
-                        <li class="m-b-5 no-padding"><a href="http://www.worthafrica.org/a2b/" target="_blank" class="link text-white">A2B</a></li>
-                        <li class="m-b-5 no-padding"><a href="http://www.worthafrica.org/nobell/" target="_blank" class="link text-white">Nobell</a></li>
-                        <li class="m-b-5 no-padding"><a href="http://www.worthafrica.org/worth-it/" target="_blank" class="link text-white">Worth IT</a></li>
-
-                    </ul>
+                    <p style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
                 </div>
                 <div class="col-sm-2 col-xs-6 xs-m-b-20">
                     <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Other Services </h6>
@@ -234,7 +253,7 @@
                 <div class="col-sm-2 col-xs-6 xs-m-b-20">
                     <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Links </h6>
                     <ul class="no-style">
-                        <li class="m-b-5 no-padding"><a href="{{route('contact')}}" class="link text-white">Contact Us</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{url('/contact')}}" class="link text-white">Contact Us</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('about')}}" class="link text-white">About Us</a></li>
                         <li class="m-b-5 no-padding"><a href="" class="link text-white">Terms & Conditions</a></li>
                         <li class="m-b-5 no-padding"><a href="" class="link text-white">Privacy Policy</a></li>
@@ -242,16 +261,17 @@
                     </ul>
                 </div>
             </div>
-            <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; 2017. All Rights Reserved </p>
+            <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; <?php echo date("Y")?> All Rights Reserved </p>
         </div>
     </section>
-    <script src="{{ asset('js/vendor/jquery-2.1.4.min.js')}}"></script>
 
 @endsection
 @section('scripts')
 
-    <script type="text/javascript" src="{{ asset('/js/swiper.jquery.min.js')}}"></script>
-    <script src="{{ asset('js/custom.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/swiper.jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-1.11.1.mim.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/pace.mim.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/custom.js')}}"></script>
 
 
 @endsection

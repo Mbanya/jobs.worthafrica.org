@@ -14,7 +14,8 @@ class HireController extends Controller
      */
     public function index()
     {
-        //
+        $hires= Hire::paginate(5);
+        return view('hire.index',compact('hires'));
     }
 
     /**
@@ -77,7 +78,8 @@ class HireController extends Controller
      */
     public function show($id)
     {
-        //
+        $hire =Hire::findOrFail($id);
+        return view('hire.show',compact('hire'));
     }
 
     /**
@@ -88,7 +90,8 @@ class HireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hire =Hire::findOrFail($id);
+        return view('hire.show',compact('hire'));
     }
 
     /**
@@ -100,7 +103,12 @@ class HireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hire =Hire::findOrFail($id);
+        if ($hire->update($request->all())){
+            return redirect('/hire')->with(['message'=>'Your Hire post was successfuly updated']);
+        }else{
+            return redirect('/hire')->with(['error'=>'There was a problem updating you Hire Post']);
+        }
     }
 
     /**

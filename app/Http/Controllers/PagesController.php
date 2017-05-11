@@ -9,12 +9,8 @@ class PagesController extends Controller
     public function home(){
         return view('index');
     }
-
     public function about(){
         return view('pages.about');
-    }
-    public function contact(){
-        return view('pages.contact');
     }
     public function pricing(){
         return view('pages.pricing');
@@ -22,6 +18,13 @@ class PagesController extends Controller
     public function hire(){
         return view('forms.employers.hire');
     }
+    public function organisation(){
+        return view('pages.organisation');
+    }
+    public function seeker(){
+        return view('pages.seeker');
+    }
+
     public function success(){
         return view('success.success');
     }

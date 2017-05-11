@@ -72,6 +72,8 @@
 
                                             </div>
                                             <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
+                                            <input type="hidden" name="location" value="{{session('location')}}">
+                                            <input type="hidden" name="job_type" value="{{session('job_type')}}">
                                             <!-- Last Name -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('last_name') ? 'has-error' : '' }}" >
                                                 <input type="text"  class="form-control" name="last_name" placeholder=" Enter LastName" required autofocus>

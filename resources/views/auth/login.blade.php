@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 
 @section('assets')
+    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
+
 @endsection
 @section('navigation')
 @endsection
@@ -14,7 +16,7 @@
             <div class="row">
               <h1 class="col-sm-6">Login Page</h1>
               <ol class="col-sm-6 text-right breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{route('index')}}">Home</a></li>
                 <li class="active">login</li>
               </ol>
             </div>
@@ -64,6 +66,11 @@
                                       <div class="alert alert-success">
                                           {{ session('message') }}
                                       </div>
+                                  @endif
+                                      @if(session('status'))
+                                          <div class="alert alert-danger">
+                                              {{ session('status') }}
+                                          </div>
                                   @endif
                                       {{csrf_field()}}
                                   <!-- email -->
@@ -125,127 +132,49 @@
 
             </div><!-- / .bg-overlay -->
 
+          </div>
+        </div>
+        <!-- ========== Footer ========== -->
+        <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker ">
 
-    <!-- ========== Footer Contact ========== -->
-
-    <footer class="footer-contact">
-        <div class="container-fluid">
-            <div class="row">
-
-                <!-- Map and address -->
-                <div class="col-lg-6 no-gap contact-info">
-
-                    <!-- Show Info Button -->
-                    <a href="#" class="show-info-link"><i class="fa fa-info"></i>Show info</a>
-
-                    <div id="map-canvas" class="footer-map"></div>
-
-                    <address class="contact-info-wrapper">
-                        <ul>
-                            <!-- Address -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Address</span>
-                                <span class="adr-info">100 Street, Il, US</span>
-                            </li>
-                            <!-- Email -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Email</span>
-                                <span class="adr-info">sayhello@email.com</span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <!-- Phone -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Phone</span>
-                                <span class="adr-info">+ 123 4567 890</span>
-                            </li>
-                            <!-- Mobile -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Mobile</span>
-                                <span class="adr-info">+ 123 4567 890</span>
-                            </li>
-                        </ul>
-
-                        <a href="#" class="show-map"><span class="linea-basic-geolocalize-05"></span>show on map</a>
-                    </address>
-
-                </div><!-- / .col-lg-6 -->
-
-
-                <!-- Contact Form -->
-                <div class="col-lg-6 no-gap section contact-form">
-                    <header class="sec-heading">
-                        <h2>Contact</h2>
-                        <span class="subheading">Lorem ipsum dolor sit amet</span>
-                    </header>
-
-                    <form action=""method="POST" class="form-ajax wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-
-                        <!-- Name -->
-                        <div class="form-group">
-                            <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="Enter your name">
-                            <label for="name-contact-1">Name</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="form-group">
-                            <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="Enter your email">
-                            <label for="email-contact-1">Email</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" id="message-contact-1" rows="5" placeholder="Your Message"></textarea>
-                            <label for="message-contact-1">Message</label>
-                        </div>
-                        <input type="submit" class="btn pull-right" value="Send Message">
-
-                        <!-- Ajax Message -->
-                        <div class="ajax-message col-md-12 no-gap"></div>
-
-                    </form>
-                </div><!-- / .col-lg-6 -->
-
-            </div><!-- / .row -->
-        </div><!-- / .container-fluid -->
-
-
-        <!-- Social Links -->
-        <div class="dark-bg">
-            <div class="container footer-social-links">
-                <div class="row">
-
-                    <ul>
-                        <li><a href="#">facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Dribbble</a></li>
-                        <li><a href="#">Behance</a></li>
-                    </ul>
-
-                </div>
-            </div><!-- / .container -->
-        </div><!-- / .dark-bg -->
-
-
-        <!-- Copyright -->
-        <div class="copyright">
             <div class="container">
                 <div class="row">
-
-                    <div class="col-md-6">
-                        <small>&copy; 2017 Worthjobs. Made by <a class="no-style-link" href="http://worthafrica.org" target="_blank">WorthAfrica</a></small>
+                    <div class="col-sm-4 col-xs-12 xs-m-b-40">
+                        <p class="" style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
+                    </div>
+                    <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                        <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Other Services </h6>
+                        <ul class="no-style">
+                            <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
+                        </ul>
                     </div>
 
-                    <div class="col-md-6">
-                        <small><a href="#page-top" class="pull-right to-the-top">To the top<i class="fa fa-angle-up"></i></a></small>
-                    </div>
+                    <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                        <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Pages </h6>
+                        <ul class="no-style">
+                            <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Looking for a Job</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white">Looking to Hire</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('pricing')}}" class="link text-white">Pricing</a></li>
 
-                </div><!-- / .row -->
-            </div><!-- / .container -->
-        </div><!-- / .copyright -->
-    </footer><!-- / .footer-contact -->
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                        <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Links </h6>
+                        <ul class="no-style">
+                            <li class="m-b-5 no-padding"><a href="{{url('/contact')}}" class="link text-white">Contact Us</a></li>
+                            <li class="m-b-5 no-padding"><a href="{{route('about')}}" class="link text-white">About Us</a></li>
+                            <li class="m-b-5 no-padding"><a href="" class="link text-white">Terms & Conditions</a></li>
+                            <li class="m-b-5 no-padding"><a href="" class="link text-white">Privacy Policy</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; <?php echo date("Y")?> All Rights Reserved </p>
+            </div>
+        </section>
 
 @endsection
 @section('scripts')

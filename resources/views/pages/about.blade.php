@@ -1,6 +1,7 @@
 @extends('layouts.layout')
-
+<title>About Us</title>
 @section('assets')
+  <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
   @endsection
 @section('navigation')
 @endsection
@@ -8,7 +9,7 @@
 @section('cover')
 <!-- ========== Page Title ========== -->
 
-        <header class="page-title pt-large pt-dark pt-plax-lg-dark" data-stellar-background-ratio="0.4">
+        <header class="page-title pt-large pt-dark pt-plax-lg-dark">
           <div class="container">
               <div class="row">
 
@@ -35,9 +36,8 @@
           <div class="row section">
             
             <header class="sec-heading">
-              <img src="{{ url('images/logo-large-dark.png')}}" alt="WorthJObs">
-              <h2 class="hidden">About Studio</h2>
-              <span class="subheading hidden">Lorem ipsum dolor sit amet, consectetur</span>
+              <img src="{{ url('images/logo-large-dark.png')}}" alt="WorthJobs">
+              <h2 class="hidden">About Us</h2>
             </header>
 
             <div class="col-md-4">
@@ -80,177 +80,31 @@
               
               <!-- Item 1 -->
               <div class="col-sm-6 col-lg-3 circle-item">
-                <div class="chart" data-percent="75"><span class="circle-icon linea-basic-gear"></span></div>
-                <span class="circle-text">Payroll</span>
+                <div class="chart" data-percent="75"><span class="circle-icon et-edit"></span></div>
+                <span class="circle-text">Job Placement</span>
               </div>
 
               <!-- Item 2 -->
               <div class="col-sm-6 col-lg-3 circle-item">
-                <div class="chart" data-percent="75"><span class="circle-icon linea-basic-display"></span></div>
+                <div class="chart" data-percent="75"><span class="circle-icon fa fa-users"></span></div>
                 <span class="circle-text">External Recruiting</span>
               </div>
 
               <!-- Item 3 -->
               <div class="col-sm-6 col-lg-3 circle-item">
-                <div class="chart" data-percent="75"><span class="circle-icon linea-basic-photo"></span></div>
-                <span class="circle-text">Legal Compliance</span>
+                <div class="chart" data-percent="75"><span class="circle-icon linea-arrows-expand"></span></div>
+                <span class="circle-text">Capacity Building</span>
               </div>
 
               <!-- Item 4 -->
               <div class="col-sm-6 col-lg-3 circle-item">
-                <div class="chart" data-percent="75"><span class="circle-icon linea-basic-star"></span></div>
+                <div class="chart" data-percent="75"><span class="circle-icon et-search"></span></div>
                 <span class="circle-text">Background Checks</span>
               </div>
 
             </div><!-- / .row -->
           </div><!-- / .container -->
         </div><!-- / .circle-counters -->
-
-
-
-        <!-- ========== Team ========== -->
-
-        <div class="gray-bg">
-          <section class="container section team-4col">
-            <div class="row">
-              
-              <header class="sec-heading">
-                <h2>Meet the team</h2>
-                <span class="subheading">We are dedicated professionals</span>
-              </header>
-
-              <!-- Member 1 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="{{url('images/team-1.jpg')}}" alt="Team Member" class="img-responsive">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">Kelvin Storey</h4>
-                    <span class="t-role">CEO &amp; Founder Partner</span>
-                    <ul class="social-links">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-lg-3 -->
-
-
-              <!-- Member 2 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="{{ url('images/team-2.jpg')}}" alt="Team Member" class="img-responsive">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">William Mbanya</h4>
-                    <span class="t-role">Developer</span>
-                    <ul class="social-links">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-lg-3 -->
-
-
-              <!-- Member 3 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="{{url('images/team-3.jpg')}}" alt="Team Member" class="img-responsive">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">John Doe</h4>
-                    <span class="t-role">Lead Designer</span>
-                    <ul class="social-links">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-lg-3 -->
-
-
-            </div><!-- / .row -->
-          </section><!-- / .contianer -->
-        </div><!-- / .gray-bg -->
-
-
-
-        <!-- ========== Number Counters ========== -->
-
-        <div class="number-counters">
-          <div class="container">
-            <div id="counters" class="row count-wrapper">
-              
-              <!-- Item 1 -->
-              <div class="col-md-3 mb-sm-100 count-item">
-                <span id="count-1" class="count-nbr">467</span>
-                <span class="count-text">Projects completed</span>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="col-md-3 mb-sm-100 count-item">
-                <span id="count-2" class="count-nbr">12</span>
-                <span class="count-text">Organisations Worked with</span>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="col-md-3 mb-sm-100 count-item">
-                <span id="count-3" class="count-nbr">46,930</span>
-                <span class="count-text">Applications  Reviewd</span>
-              </div>
-
-              <!-- Item 4 -->
-              <div class="col-md-3 count-item">
-                <span id="count-4" class="count-nbr">25</span>
-                <span class="count-text">Happy clients</span>
-              </div>
-
-            </div><!-- / .row -->
-          </div><!-- / .container -->
-        </div><!-- / .number-counters -->
 
 
 
@@ -265,70 +119,66 @@
                 <span class="subheading">We provide high quality services</span>
               </header>
 
-              <div class="col-md-12 no-gap">
-                
+              <div class="col-md-12 ">
+
                 <ul>
                   <!-- Item 1 -->
                   <li>
-                    <span class="linea-basic-headset ft-icon"></span>
-                    <h5>Dedicated Support</h5>
-                    <h6 class="h-alt">Lorem Ipsum Dolor</h6>
+                    <span class="fa fa-money ft-icon"></span>
+                    <h5>GOOD VALUE FOR MONEY</h5>
 
                     <div class="hover-content">
-                      <span class="linea-basic-headset ft-icon"></span>
-                      <span class="ft-heading">Support</span>
+                      <span class="fa fa-money ft-icon"></span>
+                      <span class="ft-heading">VALUE FOR MONEY</span>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          We guarantee value for money for all our services and products that guaranteed is our core policy in al we do everyday
                       </p>
-                      <a href="#">Learn more</a>
                     </div><!-- / .hover-content -->
                   </li>
 
                   <!-- Item 2 -->
                   <li>
-                    <span class="linea-basic-gear ft-icon"></span>
-                    <h5>Adjustments</h5>
-                    <h6 class="h-alt">Lorem Ipsum Dolor</h6>
+                    <span class="linea-basic-headset ft-icon"></span>
+                    <h5>DEDICATED SUPPORT</h5>
 
                     <div class="hover-content">
-                      <span class="linea-basic-gear ft-icon"></span>
-                      <span class="ft-heading">Adjustments</span>
+                      <span class="linea-basic-headset ft-icon"></span>
+                      <span class="ft-heading">SUPPORT</span>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          Our teams and systems are on call 24/7 for our clients to get support and enjoy our services at any time at their convenience.
                       </p>
-                      <a href="#" class="link-btn">Learn More</a>
                     </div><!-- / .hover-content -->
                   </li>
 
                   <!-- Item 3 -->
                   <li>
-                    <span class="linea-basic-joypad ft-icon"></span>
-                    <h5>Gaming</h5>
-                    <h6 class="h-alt">Lorem Ipsum Dolor</h6>
+                    <span class="fa fa-cogs ft-icon ft-icon"></span>
+                    <h5>QUALITY <br>SERVICES</h5>
+
 
                     <div class="hover-content">
-                      <span class="linea-basic-joypad ft-icon"></span>
-                      <span class="ft-heading">Gaming</span>
+                      <span class="fa fa-cogs ft-icon"></span>
+                      <span class="ft-heading">SERVICES</span>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          We commit to never to compromise on quality on our products and services. Our business process are all tied to delivering quality and value.
                       </p>
-                      <a href="#" class="link-btn">Learn More</a>
+
                     </div><!-- / .hover-content -->
                   </li>
 
                   <!-- Item 4 -->
                   <li>
                     <span class="linea-basic-message-multiple ft-icon"></span>
-                    <h5>Chat</h5>
-                    <h6 class="h-alt">Lorem Ipsum Dolor</h6>
+                    <h5>RELIABLE CLIENT RELATIONS</h5>
+
 
                     <div class="hover-content">
                       <span class="linea-basic-message-multiple ft-icon"></span>
-                      <span class="ft-heading">Chat</span>
+                      <span class="ft-heading">Relations</span>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          We form solid partnership with our clients because we believe we are only successful when our customers are successful.
                       </p>
-                      <a href="#" class="link-btn">Learn More</a>
+
                     </div><!-- / .hover-content -->
                   </li>
 
@@ -339,91 +189,86 @@
             </div><!-- / .row -->
           </section><!-- / .cotnainer -->
         </div><!-- / .gray-bg -->
-        <!-- ========== Footer Contact ========== -->
-        <footer class="footer-contact">
-          <div class="container-fluid">
+
+
+        <!-- ========== Number Counters ========== -->
+
+        <div class="number-counters">
+            <div class="container">
+                <div id="counters" class="row count-wrapper">
+
+                    <!-- Item 1 -->
+                    <div class="col-md-3 mb-sm-100 count-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
+                        <span id="count-1" class="count-nbr">467</span>
+                        <span class="count-text">Projects completed</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="col-md-3 mb-sm-100 count-item wow fadeIn" data-wow-duration="1s">
+                        <span id="count-1" class="count-nbr">12</span>
+                        <span class="count-text">Organisations Worked With</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="col-md-3 mb-sm-100 count-item wow fadeIn" data-wow-duration="1s">
+                        <span id="count-3" class="count-nbr">46,930</span>
+                        <span class="count-text">Applications Reviewed</span>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="col-md-3 count-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
+                        <span id="count-4" class="count-nbr">25</span>
+                        <span class="count-text">Happy clients</span>
+                    </div>
+
+                </div><!-- / .row -->
+            </div><!-- / .container -->
+        </div><!-- / .number-counters -->
+
+
+
+
+        <!-- ========== Footer ========== -->
+        <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker ">
+
+          <div class="container">
             <div class="row">
+              <div class="col-sm-4 col-xs-12 xs-m-b-40">
+                <p class="" style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
+              </div>
+              <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Other Services </h6>
+                <ul class="no-style">
+                  <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
+                </ul>
+              </div>
 
-              <!-- Map and address -->
-              <div class="col-lg-6 no-gap contact-info">
+              <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Pages </h6>
+                <ul class="no-style">
+                  <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Looking for a Job</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white">Looking to Hire</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('pricing')}}" class="link text-white">Pricing</a></li>
 
-                <!-- Show Info Button -->
+                </ul>
+              </div>
+              <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Links </h6>
+                <ul class="no-style">
+                  <li class="m-b-5 no-padding"><a href="{{url('/contact')}}" class="link text-white">Contact Us</a></li>
+                  <li class="m-b-5 no-padding"><a href="{{route('about')}}" class="link text-white">About Us</a></li>
+                  <li class="m-b-5 no-padding"><a href="" class="link text-white">Terms & Conditions</a></li>
+                  <li class="m-b-5 no-padding"><a href="" class="link text-white">Privacy Policy</a></li>
 
-                <div id="map-canvas" class="footer-map"></div>
-
-                <address class="contact-info-wrapper">
-                  <ul>
-                    <!-- Address -->
-                    <li class="contact-group">
-                      <span class="adr-heading">Address</span>
-                      <span class="adr-info">Greenhouse Ngong Rd, <br>3rd Floor West Wing, Suite 2</span>
-                    </li>
-                    <!-- Email -->
-                    <li class="contact-group">
-                      <span class="adr-heading">Email</span>
-                      <span class="adr-info">info@worthafrica.org</span>
-                    </li>
-                  </ul>
-                  <ul>
-                    <!-- Phone -->
-                    <li class="contact-group">
-                      <span class="adr-heading">Phone</span>
-                      <span class="adr-info">+254 732 548 039</span>
-                    </li>
-                    <!-- Mobile -->
-                    <li class="contact-group">
-                      <span class="adr-heading">Alternative </span>
-                      <span class="adr-info">+ 254 723 754 861</span>
-                    </li>
-                  </ul>
-
-                </address>
-
-              </div><!-- / .col-lg-6 -->
-
-
-              <!-- Contact Form -->
-              <div class="col-lg-6 no-gap section contact-form">
-                <header class="sec-heading">
-                  <h2>Contact</h2>
-                  <span class="subheading">Get in touch</span>
-                </header>
-
-                <form action="" method="POST" class="form-ajax wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-
-                  <!-- Name -->
-                  <div class="form-group">
-                    <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="Enter your name">
-                    <label for="name-contact-1">Name</label>
-                    <span class="pull-right alert-error"></span>
-                  </div>
-
-                  <!-- Email -->
-                  <div class="form-group">
-                    <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="Enter your email">
-                    <label for="email-contact-1">Email</label>
-                    <span class="pull-right alert-error"></span>
-                  </div>
-
-                  <!-- Message -->
-                  <div class="form-group">
-                    <textarea class="form-control" name="message" id="message-contact-1" rows="5" placeholder="Your Message"></textarea>
-                    <label for="message-contact-1">Message</label>
-                  </div>
-                  <input type="submit" class="btn pull-right" value="Send Message">
-
-                  <!-- Ajax Message -->
-                  <div class="ajax-message col-md-12 no-gap"></div>
-
-                </form>
-              </div><!-- / .col-lg-6 -->
-
-            </div><!-- / .row -->
-          </div><!-- / .container-fluid -->
-
-
-        </footer><!-- / .footer-contact -->
-
+                </ul>
+              </div>
+            </div>
+            <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; 2017. All Rights Reserved </p>
+          </div>
+        </section>
 @endsection
 
 

@@ -1,6 +1,6 @@
 @extends('layouts.forms_layout')
 @section('header')
-    <title>Permanet Hire</title>
+    <title>Permanent Jobs</title>
 @endsection
 @section('navigation')
 @endsection
@@ -40,7 +40,7 @@
                     <div class="col-md-offset-1 col-md-10">
                         <div class="form-wrapper">
                             <div class="form-content">
-                                <h3 class="form-header">Flex Jobs</h3>
+                                <h3 class="form-header">Permanent Jobs</h3>
                                 @if(count($errors))
                                     <div class="alert alert-danger">
                                         <strong>Whoops!</strong> There were some problems with your input.
@@ -58,7 +58,7 @@
                                     </div>
 
                                 @endif
-                                <form action="/flexjob" role="form" method="POST">
+                                <form action="/flexjob" role="form" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <!-- Organisation  Name -->
                                     <ol>
@@ -72,6 +72,8 @@
 
                                             </div>
                                             <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
+                                            <input type="hidden" name="location" value="{{session('location')}}">
+                                            <input type="hidden" name="job_type" value="{{session('job_type')}}">
                                             <!-- Last Name -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('last_name') ? 'has-error' : '' }}" >
                                                 <input type="text"  class="form-control" name="last_name" placeholder=" Enter LastName" required autofocus>

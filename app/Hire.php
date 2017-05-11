@@ -15,6 +15,9 @@ class Hire extends Model
 
     public function user()
     {
-        return $this->belongsTo('Cartalyst\Sentinel\Users\EloquentUser','user_id');
+        return $this->belongsTo(User::class);
+    }
+    public function getShortContentAttribute(){
+        return substr($this->Qualification_Description,0,random_int(60,250)). '...';
     }
 }

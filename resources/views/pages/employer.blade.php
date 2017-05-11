@@ -1,6 +1,9 @@
 @extends("layouts.layout")
+<title>Employers</title>
 @section('assets')
-    <link rel="stylesheet" type="text/css" href="{{elixir('css/feeder/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/feeder/style.css')}}" />
+    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
+
 @endsection
 @section('navigation')
 @endsection
@@ -9,7 +12,7 @@
 @section('cover')
     <!-- ========== Hero Cover ========== -->
 
-    <div id="home" class="animated-hero">
+    <div id="home" class="animated-hero animated-hero1">
         <div class="bg-overlay">
 
             <!-- Hero Content -->
@@ -18,21 +21,21 @@
                     <h1 style="font-size: 55px;" class="cd-headline slide hero-lead wow fadeIn" data-wow-duration="4s">
                   <span class="cd-words-wrapper">
                     <b class="is-visible">Employers</b>
-                    <b>Hire Talent</b>
-                    <b>Job Posting</b>
+                    <b>Find Talent</b>
+
                   </span>
                     </h1>
                     <div class="heading-block align-center centered-block">
                             <div class="signup-wrapper align-center">
                                 <div class="row">
-                                    <form class="form form-inline form-register form-register-small"  role="form" method="post" action="">
-
+                                    <form class="form form-inline form-register form-register-small"  role="form" method="post" action="/employer">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="select-form" style="color: white;">Service Type</label>
-                                            <select class="form-control" id="select-form">
-                                                <option>Choose one</option>
-                                                <option>Flex-Hire</option>
-                                                <option>Permanent Hire</option>
+                                            <select class="form-control" name="service" id="select-form">
+                                                <option selected disabled>Choose one</option>
+                                                <option value="flex_hire">Flex-Hire</option>
+                                                <option value="permanent_hire">Permanent Hire</option>
                                             </select>
 
                                         </div>
@@ -44,14 +47,12 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="select-form" style="color: white">Industry</label>
-                                            <select class="form-control" id="select-form">
-                                                <option>Choose one</option>
-                                                <option>Internship</option>
-                                                <option>Part-Time</option>
-                                                <option>Full-Time</option>
-                                                <option>Consultancy</option>
-
+                                            <label for="select-form" style="color: white">Job Type</label>
+                                            <select class="form-control" name="job_type" id="select-form">
+                                                <option selected disabled>Choose one</option>
+                                                <option value="internship">Internship</option>
+                                                <option value="part_time">Part-Time</option>
+                       an                         <option value="full_time">Full-Time</option>
                                             </select>
 
                                         </div>
@@ -80,202 +81,274 @@
 
     <!-- ========== About - Section ========== -->
 
-    <section id="about" class="container">
+    <section id="about" class="container ft-steps-numbers">
         <div class="row section">
 
-            <header class="sec-heading">
-                <h2> Employers </h2>
-                <span class="subheading">Lorem ipsum dolor sit amet, consectetur</span>
+            <header class="sec-heading ws-s">
+                <h2> How it Works </h2>
+                <span class="subheading">Three Simple Steps to get started</span>
             </header>
 
-            <div class="col-md-offset-1 col-md-5">
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    <footer><cite>by Henry Hill</cite></footer></blockquote>
+            <!-- Step 1 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">01</span>
+                <h4>JUST TELL US  <br>
+                    YOUR VACANCY</h4>
+                <p>Simply you tell us the talent you are <br/> looking for and your criteria.</p>
             </div>
-            <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi aperiam, quia expedita accusamus assumenda. Autem cumque, temporibus, at, suscipit totam dolore incidunt fugit amet nulla libero dignissimos labore ab rerum. Similique quasi eligendi quas excepturi perspiciatis. Distinctio nam sunt exercitationem.</p>
+
+            <!-- Step 2 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">02</span>
+                <h4>WE SEARCH AND<br>
+                    MATCH FOR YOU</h4>
+                <p>We search from our extensive up-to-date<br/> database or networks.</p>
             </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">03</span>
+                <h4>WE GIVE YOU<br>
+                    BEST JOBS FIT</h4>
+                <p>Within hours we give you a shortlist <br/>top 3 pre-screened candidates</p>
+            </div>
+
         </div><!-- / .row -->
-        <div class="row ws-m">
-            <div class="col-md-12 text-center">
-                <a href="{{url('about')}}" class="btn-text">More about us</a>
-            </div>
-        </div>
     </section><!-- / .container -->
 
-
-
-
-
-
-
-    <!-- ========== Featured Projects ========== -->
-
-    <div class="bg-container-fluid ft-hover-item">
+    <div class=" container no-gap-right">
+    <div class="work-with-us">
         <div class="row">
-
-            <!-- Item 1 -->
-            <div class="ft-item ft-1 col-sm-4">
-                <div class="bg-overlay">
-
-                    <div class="content-wrapper">
-                        <h3>Post TOR</h3>
-                        <p>You tell us who you are looking for and we will alert the potential candidates</p>
-                        <a href="{{url('tor')}}" class="btn-ghost btn-ghost-light ft-button">Post TOR</a>
+            <div class="col-lg-5 ">
+                <h2 style="font-size: 30px; font-weight:700; text-transform: uppercase;">Why <span style="color: green;">work with us?</span></h2>
+                <div class="row">
+                    <div class="col-lg-11">
+                        <p style="font-size: 15px;">Competition for top talent can get pretty fierce. That's because many of the best
+                            candidates are already working. Do you want to settle for the best of what's available,
+                            or do you really want to find the best person for the job? Let's just assume you said
+                            "the best person for the job." Well, we know people like that. Top-notch, hard-to-reach
+                            passive candidates. The people you may not find through a small agency or a job board.
+                            The people who will make a move for the right opportunity — your opportunity.
+                            Those are the people we place every day, in every industry.</p>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="img-horz-center">
+                    <img class="img-responsive" src="{{url('images/hero/employee_engagment.jpg')}}" alt="work with us">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                </div><!-- / .bg-overlay -->
-            </div><!-- / .ft-item -->
+    </div>
+    <style>
+        .pmj{
+            background-color: #d9e7ed;
 
-            <!-- Item 2 -->
-            <div class="ft-item ft-2 col-sm-4">
-                <div class="bg-overlay">
+        }
+    </style>
+    <div style=" padding-bottom: 10%"></div>
+    <section class="pmj">
+        <div class="container">
+            <div class="work-with-us">
+                <div class="row">
+                    <div class="col-lg-11 ">
+                        <h2 style="font-size: 30px;  text-transform: uppercase;">Permanent Hire </h2>
+                        <div class="margin-bottom-20"></div>
+                        <div class="row">
+                            <div class="col-lg-11">
+                                <h2 style="font-size: 20px; ">SAVE MONEY</h2>
+                                <p style="font-size: 13px">When you work with us you reduce your hiring risk and save your business
+                                    time and money because we focus on alleviating all the administrative burden of recruiting, evaluating,
+                                    screening, and interviewing to find best candidates in the market. </p>
+                                <h2 style="font-size: 20px;  text-transform: uppercase;">DEDICATED AND FOCUSED TO GET YOU THE BEST</h2>
+                                <p style="font-size: 13px">
+                                    We focus on providing leading employers with the highest calibre of talent while maintaining our
+                                    commitment to integrity, honesty, and responsiveness. We understand that choosing someone to work
+                                    for your organization is an important decision, so we do all our candidate searches with absolute
+                                    dedication and focused effort. We leverage our unparalleled database of candidates and industry-specific
+                                    expertise to successfully match our clients with the professionals they need to push business forward
+                                </p>
 
-                    <div class="content-wrapper">
-                        <h3>Consultant Profile</h3>
-                        <p> By registering with us you have the privilledge to view any consultancies currently available</p>
-                        <a href="{{url('consultant')}}" class="btn-ghost btn-ghost-light ft-button">Post Profile</a>
+                                <h2 style="font-size: 20px; ">INNOVATION FOR QUALITY AND EFFICIENCY</h2>
+                                <p style="font-size: 13px">
+                                    We approach recruitment from a holistic perspective, continually implementing new and innovative
+                                    ways to improve talent quality, compliance, and cost-effectiveness. Our expert teams act as an
+                                    extension of our clients’ recruiting departments, offering a centralized model and a single provider
+                                    for all their needs—from project-based support to comprehensive end-to-end solutions.
+                                    With experienced recruiters already operating in critical markets and industries, we deliver
+                                    strategic advantage our clients.
+                                </p>
+
+
+                            </div>
+
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                </div><!-- / .bg-overlay -->
-            </div><!-- / .ft-item -->
-            <div class="ft-item ft-3 col-sm-4">
-                <div class="bg-overlay">
+    <section id="about" class="container ft-steps-numbers">
+        <div class="row section">
 
-                    <div class="content-wrapper">
-                        <h3>View Consultancy</h3>
-                        <p>Here you can view available consultancies from our clients</p>
-                        <a href="{{url('consultancy_view')}}" class="btn-ghost btn-ghost-light ft-button">View Consultancies</a>
-                    </div>
+            <header class="sec-heading ws-s">
+                <h2> How Permanent <span style="color: #002d49; ">Hire Works</span></h2>
+                <span class="subheading">Three Simple Steps to get started</span>
+            </header>
 
-                </div><!-- / .bg-overlay -->
-            </div><!-- / .ft-item -->
+            <!-- Step 1 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">01</span>
+                <h4>STEP  <br>
+                    ONE</h4>
+                <p> You let us know the talent<br/> you are looking for</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">02</span>
+                <h4>STEP<br>
+                    TWO</h4>
+                <p>We confirm to
+                    customize your <br/>vacancy needs</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">03</span>
+                <h4>STEP<br>
+                    THREE</h4>
+                <p> We match you for best <br/> fit candidates</p>
+            </div>
 
         </div><!-- / .row -->
-    </div><!-- / .container-fluid -->
+    </section><!-- / .container -->
+    <style>
+        .fj{
+            background-color: rgba(114,192,44,0.3);
 
-    <!-- ========== Footer Contact ========== -->
+        }
+    </style>
+    <section class="fj">
+        <div class="container">
 
-    <footer id="contact" class="footer-contact">
-        <div class="container-fluid">
-            <div class="row">
-
-                <!-- Map and address -->
-                <div class="col-lg-6 no-gap contact-info">
-
-                    <!-- Show Info Button -->
-                    <a href="#" class="show-info-link"><i class="fa fa-info"></i>Show info</a>
-
-                    <div id="map-canvas" class="footer-map"></div>
-
-                    <address>
-                        <ul>
-                            <!-- Address -->
-                            <li>
-                                <span class="linea-basic-map adr-icon"></span>
-                                <div class="adr-group">
-                                    <span class="adr-heading">Address</span>
-                                    <span class="adr-info">Greenhouse Ngong Rd, <br>3rd Floor West Wing, Suite 2</span>
-                                </div>
-                            </li>
-
-                            <!-- Email -->
-                            <li>
-                                <span class="linea-basic-paperplane adr-icon"></span>
-                                <div class="adr-group">
-                                    <span class="adr-heading">Email</span>
-                                    <span class="adr-info">info@worthafrica.org</span>
-                                </div>
-                            </li>
-
-                            <!-- Phone -->
-                            <li>
-                                <span class="linea-basic-smartphone adr-icon"></span>
-                                <div class="adr-group">
-                                    <span class="adr-heading">Phone</span>
-                                    <span class="adr-info">+254 732 548 039
-</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </address>
-                </div><!-- / .col-lg-6 -->
-
-
-                <!-- Contact Form -->
-                <div class="col-lg-6 no-gap section contact-form">
-                    <header class="sec-heading">
-                        <h2>Contact</h2>
-                        <span class="subheading">Get in touch</span>
-                    </header>
-
-                    <form action="" method="POST" class="form-ajax wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-
-                        <!-- Name -->
-                        <div class="form-group">
-                            <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="Enter your name">
-                            <label for="name-contact-1">Name</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="form-group">
-                            <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="Enter your email">
-                            <label for="email-contact-1">Email</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" id="message-contact-1" rows="5" placeholder="Your Message"></textarea>
-                            <label for="message-contact-1">Message</label>
-                        </div>
-                        <input type="submit" class="btn pull-right" value="Send Message">
-
-                        <!-- Ajax Message -->
-                        <div class="ajax-message col-md-12 no-gap"></div>
-
-                    </form>
-                </div><!-- / .col-lg-6 -->
-
-            </div><!-- / .row -->
-        </div><!-- / .container-fluid -->
-
-
-        <!-- Social Links -->
-        <div class="dark-bg">
-            <div class="container footer-social-links">
+            <div class="work-with-us ">
                 <div class="row">
+                    <div class="col-lg-11 ">
+                        <h2 style="font-size: 30px;  text-transform: uppercase;">Flex <span style="color: #002d49; ">Hire</span></h2>
+                        <div class="margin-bottom-20"></div>
+                        <div class="row">
+                            <div class="col-lg-11">
+                                <h2 style="font-size: 20px;">SAVE MONEY</h2>
+                                <p >When you work with us you reduce your hiring risk and save your business
+                                    time and money because we focus on alleviating all the administrative burden of recruiting, evaluating,
+                                    screening, and interviewing to find best candidates in the market. </p>
+                                <h2 style="font-size: 20px;  text-transform: uppercase;">DEDICATED AND FOCUSED TO GET YOU THE BEST</h2>
+                                <p>
+                                    We focus on providing leading employers with the highest calibre of talent while maintaining our
+                                    commitment to integrity, honesty, and responsiveness. We understand that choosing someone to work
+                                    for your organization is an important decision, so we do all our candidate searches with absolute
+                                    dedication and focused effort. We leverage our unparalleled database of candidates and industry-specific
+                                    expertise to successfully match our clients with the professionals they need to push business forward
+                                </p>
 
-                    <ul>
-                        <li><a href="#">facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Linkedin</a></li>
-                    </ul>
-
+                                <h2 style="font-size: 20px; ">INNOVATION FOR QUALITY AND EFFICIENCY</h2>
+                                <p>
+                                    We approach recruitment from a holistic perspective, continually implementing new and innovative
+                                    ways to improve talent quality, compliance, and cost-effectiveness. Our expert teams act as an
+                                    extension of our clients’ recruiting departments, offering a centralized model and a single provider
+                                    for all their needs—from project-based support to comprehensive end-to-end solutions.
+                                    With experienced recruiters already operating in critical markets and industries, we deliver
+                                    strategic advantage our clients.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div><!-- / .container -->
-        </div><!-- / .dark-bg -->
+            </div>
+        </div>
+    </section>
 
+    <section id="about" class="container ft-steps-numbers">
+        <div class="row section">
 
-        <!-- Copyright -->
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
+            <header class="sec-heading ws-s">
+               <h2> How Flex <span style="color: #002d49; "> Hire Works</span></h2>
+                <span class="subheading">Three Simple Steps to get started</span>
+            </header>
 
-                    <div class="col-md-6">
-                        <small>&copy; 2017 Copyright by <a class="no-style-link" href="http://worthafrica.org" target="_blank">Worth Africa</a></small>
-                    </div>
+            <!-- Step 1 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">01</span>
+                <h4>STEP  <br>
+                    ONE</h4>
+                <p> You let us know the talent<br/> you are looking for</p>
+            </div>
 
-                    <div class="col-md-6">
-                        <small><a href="#page-top" class="pull-right to-the-top">To the top<i class="fa fa-angle-up"></i></a></small>
-                    </div>
+            <!-- Step 2 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">02</span>
+                <h4>STEP<br>
+                    TWO</h4>
+                <p>We confirm to
+                    customize your <br/>vacancy needs</p>
+            </div>
 
-                </div><!-- / .row -->
-            </div><!-- / .container -->
-        </div><!-- / .copyright -->
-    </footer><!-- / .footer-contact -->
-@endsection
+            <!-- Step 3 -->
+            <div class="col-lg-4 col-md-6 mb-sm-100 ft-item">
+                <span class="ft-nbr">03</span>
+                <h4>STEP<br>
+                    THREE</h4>
+                <p> We match you for best <br/> fit candidates</p>
+            </div>
+
+        </div><!-- / .row -->
+    </section><!-- / .container -->
+    <!-- ========== Footer ========== -->
+    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker ">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 xs-m-b-40">
+                    <p class="" style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
+                </div>
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Other Services </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Pages </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Looking for a Job</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white">Looking to Hire</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('pricing')}}" class="link text-white">Pricing</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Links </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{url('/contact')}}" class="link text-white">Contact Us</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('about')}}" class="link text-white">About Us</a></li>
+                        <li class="m-b-5 no-padding"><a href="" class="link text-white">Terms & Conditions</a></li>
+                        <li class="m-b-5 no-padding"><a href="" class="link text-white">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; <?php echo date("Y")?> All Rights Reserved </p>
+        </div>
+    </section>
+    @endsection
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @endsection

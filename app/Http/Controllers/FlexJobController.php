@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\FlexJob;
+use Sentinel;
+
 
 class FlexJobController extends Controller
 {
@@ -14,7 +16,10 @@ class FlexJobController extends Controller
      */
     public function index()
     {
-        //
+       $id = Sentinel::getUser()->getUserId();
+       $flexjobs= FlexJob::paginate(5);
+
+       return view('flexjobs.index',compact('flexjobs'));
     }
 
     /**
@@ -35,7 +40,12 @@ class FlexJobController extends Controller
      */
     public function store(Request $request)
     {
-        FlexJob::create($request->all());
+        if (FlexJob::create($request->all()))
+            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Profile was received Thank you for registering with us']);
+        else {
+            return redirect()->back()->with([
+                'error' => 'There was a problem storing your job kindly try again.']);
+        }
     }
 
     /**
@@ -46,7 +56,8 @@ class FlexJobController extends Controller
      */
     public function show($id)
     {
-        //
+        $flexjob =FlexJob::findOrFail($id);
+        return view('flexjobs.show',compact('flexjob'));
     }
 
     /**

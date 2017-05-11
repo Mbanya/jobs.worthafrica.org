@@ -64,11 +64,23 @@
     <div id="navbar" class="navbar-collapse collapse page-scroll navbar-right">
         <ul class="nav navbar-nav">
             <li><a href="{{route('index')}}">Home<span class="sr-only"></span></a></li>
-            <li><a href="{{url('/#how')}}">How it Works<span class="sr-only"></span></a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Services <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ route('employer') }}">Looking to Hire</a></li>
+                    <li><a href="{{ route('job_seeker') }}">Looking for a Job</a></li>
+                    <li><a href="{{ route('employer') }}">Flex Hire</a></li>
+                    <li><a href="{{ route('job_seeker') }}">Flex Jobs</a></li>
+                    <li><a href="{{ route('consult_hub') }}">Consult Hub</a></li>
+                    <li><a href="{{ route('job_seeker') }}">Mock Interviews</a></li>
+                </ul>
+            </li>
             <li><a href="{{route('pricing')}}">Pricing<span class="sr-only"></span></a></li>
             <li><a href="{{url('/#faq')}}">FAQ'S<span class="sr-only"></span></a></li>
             <li><a href="{{route('about')}}">About Us<span class="sr-only"></span></a></li>
-            <li><a href="{{route('contact')}}">Contact Us<span class="sr-only"></span></a></li>
+            <li><a href="{{url('/contact')}}">Contact Us<span class="sr-only"></span></a></li>
             @if (Sentinel::check())
 
                 <li class="dropdown">
@@ -95,6 +107,9 @@
                         </li>
                         <li>
                             <a href="/jobs/create">Post Job Profile</a>
+                        </li>
+                        <li>
+                            <a href="/flexhire">List of Jobs</a>
                         </li>
                     </ul>
 

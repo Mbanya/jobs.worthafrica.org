@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-
+<title>Pricing</title>
 @section('assets')
 @endsection
 @section('navigation')
@@ -27,13 +27,13 @@
 
 
 @section('content')
-    <section id="about" class="container">
+    <section id="about" class="container no-gap-right">
         <div class="row section">
             <div>
                 <header class="sec-heading">
                     <h1>Pricing Chart</h1>
                 </header>
-                <img src="{{url('images/pricing.jpg')}}" class="md-image-responsive-width" alt="Pricing Chart" style="width: 77%;height: auto; padding-left: 70px;">
+                <img src="{{url('images/utilities/sg30..png')}}" class="md-image-responsive-width" alt="Pricing Chart" style="width: 77%;height: auto; padding-left: 70px;">
 
             </div>
         </div>

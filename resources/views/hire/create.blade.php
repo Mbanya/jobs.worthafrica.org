@@ -1,4 +1,4 @@
-@extends('layouts.forms_layout')
+@extends('layouts.organisation_layout')
 @section('header')
     <title>Permanet Hire</title>
 @endsection
@@ -71,6 +71,8 @@
 
                                             </div>
                                             <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
+                                            <input type="hidden" name="location" value="{{session('location')}}">
+                                            <input type="hidden" name="job_type" value="{{session('industry')}}">
                                             <!-- Organization Size -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('organisation_size') ? 'has-error' : '' }}" >
                                                     <input type="text"   name="organisation_size" class="form-control" value="{{Sentinel::getUser()->org_size}}">

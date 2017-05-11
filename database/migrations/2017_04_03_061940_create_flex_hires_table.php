@@ -29,6 +29,8 @@ class CreateFlexHiresTable extends Migration
             $table->integer('minSal')->nullable();
             $table->integer('maxSal')->nullable();
             $table->string('Frequency_Rate');
+            $table->string('location');
+            $table->string('job_type');
             $table->date('start_date');
             $table->date('end_date');
 

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateFlexHireFormRequest;
 use Illuminate\Http\Request;
 use App\Flexhire;
 
+
 class FlexHireController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +17,9 @@ class FlexHireController extends Controller
      */
     public function index()
     {
-        $flexhire = Flexhire::all();
-        return $flexhire;
-//        return view('flexhire.index',compact('flexhire'));
+//
+        $flexhires = Flexhire::paginate(5);
+        return view('flexhire.index',compact('flexhires'));
     }
 
     /**
@@ -26,7 +29,9 @@ class FlexHireController extends Controller
      */
     public function create()
     {
-            return view('flexhire.create');
+
+        return View('flexhire.create');
+
     }
 
     /**
@@ -35,29 +40,31 @@ class FlexHireController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateFlexHireFormRequest $request)
     {
-       /* $flexhire= new Flexhire;
-        $flexhire ->user_id = Sentinel::getUserId();
-        $flexhire->organisation_name =$request->organisation_name;
-        $flexhire->organisation_size = $request->organisation_size;
-        $flexhire->organisation_type = $request->organisation_type;
-        $flexhire->Physical_Address = $request->Physical_Address;
-        $flexhire->email =$request ->email;
-        $flexhire->key_qualification = $request->key_qualification;
-        $flexhire->Qualification_Description =$request->Qualification_Description;
-        $flexhire->experience = $request->experience;
-        $flexhire->Responsibilities =$request->Responsibilities;
-        $flexhire->skills =$request->skills;
-        $flexhire->minSal = $request->minSal;
-        $flexhire->maxSal = $request->maxSal;
-        $flexhire->Frequency_Rate =$request->Frequency_Rate;
-        $flexhire->start_date= $request->start_date;
-        $flexhire->end_date =$request->end_date;
+        $flexhire = new Flexhire(array(
+            'user_id'=>$request->get('user_id'),
+            'organisation_name'=>$request->get('organisation_name'),
+            'organisation_size'=>$request->get('organisation_size'),
+            'organisation_type'=>$request->get('organisation_type'),
+            'Physical_Address'=>$request->get('Physical_Address'),
+            'email'=>$request->get('email'),
+            'key_qualification'=>$request->get('key_qualification'),
+            'Qualification_Description'=>$request->get('Qualification_Description'),
+            'experience'=>$request->get('experience'),
+            'Responsibilities'=>$request->get('Responsibilities'),
+            'skills'=>$request->get('skills'),
+            'minSal'=>$request->get('minSal'),
+            'maxSal'=>$request->get('maxSal'),
+            'Frequency_Rate'=>$request->get('Frequency_Rate'),
+            'location'=>$request->get('location'),
+            'job_type'=>$request->get('job_type'),
+            'start_date'=>$request->get('start_date'),
+            'end_date'=>$request->get('end_date')
+        ));
+        $flexhire->save();
+               return redirect(route('flexhire.index'))->with(['message' => 'Your Flex Hire Job listing was received We shall get back to you shortly']);
 
-        $flexhire->save();*/
-
-        Flexhire::create($request->all());
     }
 
     /**
@@ -68,7 +75,8 @@ class FlexHireController extends Controller
      */
     public function show($id)
     {
-        //
+        $flexhire =Flexhire::findOrFail($id);
+        return view('flexhire.show',compact('flexhire'));
     }
 
     /**
@@ -79,7 +87,8 @@ class FlexHireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $flexhire =Flexhire::findOrFail($id);
+        return view('flexhire.edit',compact('flexhire'));
     }
 
     /**
@@ -91,7 +100,14 @@ class FlexHireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $flexhire =Flexhire::findOrFail($id);
+       if ($flexhire->update($request->all())){
+           return redirect('/flexhire')->with(['message'=>'Your FlexHire Post was Successfully Updated']);
+
+       }else{
+           return redirect()->back()->with(['error'=>'There were problems with updating you post. Kindly try again']);
+       }
+
     }
 
     /**

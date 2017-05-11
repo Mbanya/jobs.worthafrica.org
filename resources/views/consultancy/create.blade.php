@@ -71,9 +71,9 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('Qualification_Description') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name=" Qualification_Description" id="txt-forms" rows="10" placeholder="Do candidates need education in a specific subject (e.g. diploma or degree in marketing or communication)? If so, please indicate further here."></textarea>
-                                                <span class="text-danger">{{ $errors->first('Qualification_Description') }}</span>
+                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('summary') ? 'has-error' : '' }}">
+                                                <textarea class="form-control" name=" summary" id="txt-forms" rows="10" placeholder="Do candidates need education in a specific subject (e.g. diploma or degree in marketing or communication)? If so, please indicate further here."></textarea>
+                                                <span class="text-danger">{{ $errors->first('summary') }}</span>
                                             </div>
                                         </div>
                                         <div class="row">

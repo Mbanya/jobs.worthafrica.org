@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobFormRequest;
 use Illuminate\Http\Request;
 use App\Job;
 
@@ -14,7 +15,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs=Job::paginate(10);
+        return view('jobs.index',compact('jobs'));
     }
 
     /**
@@ -22,7 +24,7 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('jobs.create');
     }
@@ -33,9 +35,30 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobFormRequest $request)
     {
-        Job::create($request->all());
+       $job = new Job(array(
+           'first_name'=>$request->get('first_name'),
+           'last_name'=>$request->get('last_name'),
+           'email'=>$request->get('email'),
+           'Physical_Address'=>$request->get('Physical_Address'),
+           'key_qualification'=>$request->get('key_qualification'),
+           'other_key_qualification'=>$request->get('other_key_qualification'),
+           'experience'=>$request->get('experience'),
+           'skills'=>$request->get('skills'),
+           'profession'=>$request->get('profession'),
+           'availability'=>$request->get('availability'),
+            $data = $request->session()->all()
+       ));
+        $job->save();
+        $filename = $job->id . '.' .
+            $request->file('CV')->getClientOriginalExtension();
+
+        $request->file('CV')->move(
+            base_path() . '/public/files/resume/', $filename
+        );
+        return redirect(route('jobs.index'))->with(['message' => 'Your Job profile was successfully posted.']);
+
     }
 
     /**
@@ -46,7 +69,8 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+        $job =Job::findOrFail($id);
+        return view('jobs.show',compact('job'));
     }
 
     /**

@@ -8,6 +8,7 @@ use Activation;
 use Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
+
 class RegisterController extends Controller
 {
    public function showRegister()
@@ -26,10 +27,10 @@ class RegisterController extends Controller
         }catch (QueryException $queryException){
                 $errors = $queryException->getBindings();
             return redirect()->back()->with([
-                'error'=>'There was a problem registering your account.'
+                'error'=>'Problems Registering your Account Kindly Try Again'
             ]);
-        }
 
+        }
    }
    public function showOrgRegister(){
        return view('auth.organisation_register');
@@ -38,12 +39,19 @@ class RegisterController extends Controller
        return view('auth.sign-up');
    }
    public function postOrgRegister( Request $request){
-       $user=Sentinel::register($request->all());
-       $activation =Activation::create($user);
-       $role= Sentinel::findRoleById(2);
-       $role->users()->attach($user);
-       $this->sendEmail($user,$activation->code);
-       return redirect('/login');
+    try{
+           $user=Sentinel::register($request->all());
+           $activation =Activation::create($user);
+           $role= Sentinel::findRoleById(2);
+           $role->users()->attach($user);
+           $this->sendEmail($user,$activation->code);
+           return redirect('/login')->with(['message'=>'Check email to activate account']);
+       }catch (QueryException $queryException){
+    $errors = $queryException->getBindings();
+    return redirect()->back()->with([
+    'error'=>'Problems Registering your Account'
+    ]);
+}
    }
 
    private function sendEmail($user, $code){
@@ -54,7 +62,7 @@ class RegisterController extends Controller
            'code'=>$code
        ], function ($message) use ($user){
            $message->to($user->email);
-           $message->subject("Hello $user->first_name, activate your account.");
+           $message->subject("Hello $user->email, activate your account.");
        });
    }
 }

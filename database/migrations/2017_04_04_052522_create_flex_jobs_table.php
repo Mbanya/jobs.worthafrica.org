@@ -26,6 +26,8 @@ class CreateFlexJobsTable extends Migration
             $table->longText('skills')->nullable();
             $table->string('profession');
             $table->date('availability');
+            $table->string('location');
+            $table->string('job_type');
             $table->timestamps();
 
             $table->index('user_id');

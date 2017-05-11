@@ -9,7 +9,7 @@
 @section('cover')
         <!-- ========== Page Title ========== -->
 
-        <header class="page-title pt-large pt-light pt-parallax pt-plax-lg-light" data-stellar-background-ratio="0.4">
+        <header class="page-title pt-large pt-dark pt-parallax pt-plax-lg-dark" data-stellar-background-ratio="0.4">
           <div class="container">
               <div class="row">
 
@@ -40,42 +40,89 @@
                     <h2>Get in touch</h2>
                     <p>Have a project you would like us to consider or just want to say hello? We would love to hear from you. Use the form below to describe your project and contact us. We promise to get in touch with you shortly.</p>
                   </div>
-
-                  <form action="" method="POST" class="form-minimal form-ajax">
-
-                    <!-- Name -->
-                    <div class="form-group">
-                      <input type="text" name="name" id="name-contact-3" class="form-control validate-locally">
-                      <label for="name-contact-3">Name *</label>
-                      <span class="pull-right alert-error"></span>
+                  <ul>
+                    @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                  @if(session('message'))
+                    <div class="alert alert-success">
+                      {{session('message')}}
                     </div>
+                  @endif
+                  {!! Form::open(array('route' => 'contact.store', 'class' => 'class="form-minimal form-ajax"')) !!}
 
-                    <!-- Email -->
-                    <div class="form-group">
-                      <input type="email" name="email" id="email-contact-3" class="form-control validate-locally">
-                      <label for="email-contact-3">Email *</label>
-                      <span class="pull-right alert-error"></span>
-                    </div>
+                  <div class="form-group">
+                    {!! Form::label('Your Name') !!}
+                    {!! Form::text('name', null,
+                        array('required',
+                              'class'=>'form-control',
+                              'placeholder'=>'Your name')) !!}
+                  </div>
 
-                    <!-- Phone -->
-                    <div class="form-group ws-s">
-                      <input type="tel" name="phone" id="phone-contact-3" class="form-control">
-                      <label for="email-contact-3">Phone</label>
-                    </div>
+                  <div class="form-group">
+                    {!! Form::label('Your E-mail Address') !!}
+                    {!! Form::text('email', null,
+                        array('required',
+                              'class'=>'form-control validate-locally',
+                              'placeholder'=>'Your e-mail address')) !!}
+                  </div>
+                  <div class="form-group">
+                    {!! Form::label('Phone Number') !!}
+                    {!! Form::tel('phone', null,
+                        array('class'=>'form-control validate-locally',
+                              'placeholder'=>'Your Phone Number')) !!}
+                  </div>
 
-                    <!-- Message -->
-                    <div class="form-group">
-                      <p>Just say hello, or tell me about your project</p>
-                      <textarea class="form-control" name="message" id="message-contact-1" rows="5"></textarea>
-                      <label for="message-contact-1">Message *</label>
-                    </div>
+                  <div class="form-group">
+                    {!! Form::label('Your Message') !!}
+                    {!! Form::textarea('message', null,
+                        array('required',
+                              'class'=>'form-control',
+                              'row'=>'5',
+                              'placeholder'=>'Just say hello, or tell me about your project')) !!}
+                  </div>
 
-                    <input type="submit" class="btn-text" value="Send Message">
+                  <div class="form-group">
+                    {!! Form::submit('Contact Us!',
+                      array('class'=>'btn-text')) !!}
+                  </div>
+                  {!! Form::close() !!}
+                  {{--<form action="/contact" role="form" method="POST" class="form-minimal form-ajax">--}}
 
-                    <!-- Ajax Message -->
-                    <div class="ajax-message"></div>
+                    {{--<!-- Name -->--}}
+                    {{--<div class="form-group">--}}
+                      {{--<input type="text" name="name" id="name-contact-3" class="form-control validate-locally">--}}
+                      {{--<label for="name-contact-3">Name *</label>--}}
+                      {{--<span class="pull-right alert-error"></span>--}}
+                    {{--</div>--}}
 
-                  </form>
+                    {{--<!-- Email -->--}}
+                    {{--<div class="form-group">--}}
+                      {{--<input type="email" name="email" id="email-contact-3" class="form-control validate-locally">--}}
+                      {{--<label for="email-contact-3">Email *</label>--}}
+                      {{--<span class="pull-right alert-error"></span>--}}
+                    {{--</div>--}}
+
+                    {{--<!-- Phone -->--}}
+                    {{--<div class="form-group ws-s">--}}
+                      {{--<input type="tel" name="phone" id="phone-contact-3" class="form-control">--}}
+                      {{--<label for="email-contact-3">Phone</label>--}}
+                    {{--</div>--}}
+
+                    {{--<!-- Message -->--}}
+                    {{--<div class="form-group">--}}
+                      {{--<p>Just say hello, or tell me about your project</p>--}}
+                      {{--<textarea class="form-control" name="message" id="message-contact-1" rows="5"></textarea>--}}
+                      {{--<label for="message-contact-1">Message *</label>--}}
+                    {{--</div>--}}
+
+                    {{--<input type="submit" class="btn-text" value="Send Message">--}}
+
+                    {{--<!-- Ajax Message -->--}}
+                    {{--<div class="ajax-message"></div>--}}
+
+                  {{--</form>--}}
                 </div>
               </div>
 
