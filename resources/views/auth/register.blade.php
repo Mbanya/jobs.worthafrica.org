@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('assets')
-    <link class="main-stylesheet" href="{{asset('public/css/pages.css')}}" rel="stylesheet" type="text/css"/>
+    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
 <title>Registration|Job Seeker</title>
 @endsection
 @section('navigation')

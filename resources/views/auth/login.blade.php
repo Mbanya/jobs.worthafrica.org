@@ -1,8 +1,7 @@
 @extends('layouts.layout')
-
 @section('assets')
     <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
-
+<title>Login</title>
 @endsection
 @section('navigation')
 @endsection

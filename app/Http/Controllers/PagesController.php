@@ -25,6 +25,7 @@ class PagesController extends Controller
         return view('pages.seeker');
     }
 
+
     public function success(){
         return view('success.success');
     }
