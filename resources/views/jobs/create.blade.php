@@ -50,6 +50,7 @@
                                                 <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
+
                                     </div>
                                 @endif
                                 @if(session('message'))
@@ -58,7 +59,7 @@
                                     </div>
 
                                 @endif
-                                <form action="/jobs" role="form" method="POST">
+                                <form action="/jobs" role="form" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <!-- Organisation  Name -->
                                     <ol>
@@ -66,17 +67,17 @@
                                         <!--First Name -->
                                         <div class="row">
                                             <div class="form-group col-md-6 no-gap-right {{ $errors->has('first_name') ? 'has-error' : '' }}">
-                                                <input type="text"  class="form-control" name="first_name" placeholder=" Enter FirstName" required autofocus>
+                                                <input type="text"  class="form-control" name="first_name" value="{{Sentinel::getUser()->first_name}}" placeholder=" Enter FirstName" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                                 <label for="txt-forms">First Name</label>
 
                                             </div>
                                             <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
                                             <input type="hidden" name="location" value="{{session('location')}}">
-                                            <input type="hidden" name="job_type" value="{{session('job_type')}}">
+                                            <input type="hidden" name="industry" value="{{session('job_type')}}">
                                             <!-- Last Name -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('last_name') ? 'has-error' : '' }}" >
-                                                <input type="text"  class="form-control" name="last_name" placeholder=" Enter LastName" required autofocus>
+                                                <input type="text"  class="form-control" name="last_name" value="{{Sentinel::getUser()->last_name}}" placeholder=" Enter LastName" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                                 <label for="txt-forms">Last Name</label>
                                             </div>
@@ -84,15 +85,13 @@
                                         <div class="row">
                                             <!-- Email -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('email') ? 'has-error' : '' }}" >
-                                                <div class="form-group col-md-10 no-gap-right {{ $errors->has('email') ? 'has-error' : '' }}">
-                                                <input type="email"  name="email" class="form-control" value="{{old('email')}}" placeholder="Enter contact email" required autofocus>
+                                                <input type="email"  name="email" class="form-control" value="{{Sentinel::getUser()->email}}" placeholder="Enter contact email" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                                 <label>Contact Email</label>
                                             </div>
-                                            </div>
                                             <!-- Location -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('Physical_Address') ? 'has-error' : '' }}" >
-                                                <input type="tel" name="phone_number"value="{{old('phone_number')}}"  class="form-control" placeholder="Enter Your Phone Number " required autofocus>
+                                                <input type="tel" name="phone_number"value="{{Sentinel::getUser()->phone_number}}"  class="form-control" placeholder="Enter Your Phone Number " required autofocus>
                                                 <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                                 <label>Phone Number</label>
                                             </div>

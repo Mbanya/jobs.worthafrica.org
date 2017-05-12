@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -58,22 +55,22 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: .1rem;
-            text-decoration: none;
+            text-decoration: blink;
             text-transform: uppercase;
         }
 
         .m-b-md {
             margin-bottom: 30px;
 
-        }
+        }e
     </style>
 </head>
 <body>
 <p>Account Activation</p>
     <div class="content">
 <p style="text-align: left">Congratulations your account has successfully been created.Click on
-    <a class="links" href="{{ env('APP_URL')}}/activate/{{$user->email}}/{{$code}}">Activate Account</a>
-    and activate your account to enable you to logon to WorthJobs </a>
+    <a href="{{ env('APP_URL')}}/activate/{{$user->email}}/{{$code}}">Activate Account</a>
+    and activate your account to enable you to logon to WorthJobs
 </p>
         <p style="text-align: left">
             Regards,<br>
