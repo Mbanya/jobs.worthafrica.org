@@ -1,4 +1,4 @@
-@extends("layouts.layout")
+@extends("layouts.forms_layout")
 @section('assets')
     <link rel="stylesheet" type="text/css" href="{{asset('css/feeder/style.css')}}" />
     <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
@@ -25,16 +25,25 @@
                     <b>Get Hired </b>
                   </span>
                     </h1>
+
                     <div class="heading-block align-center centered-block">
+
                         <div class="signup-wrapper align-center">
                             <div class="row">
+
                                 <form class="form form-inline form-register form-register-small"  role="form" method="POST" action="/seekers">
+                                    @if(session('message'))
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h5 style="color: white;">{{ session('message') }}</h5>
+                                        </div>
+                                    @endif
                                         {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="select-form" style="color: white;">Service Type</label>
                                         <select class="form-control" name="service" id="select-form">
                                             <option selected disabled="">Choose one</option>
-                                            <option value="FlexTalent">Flex-talent</option>
+                                            <option value="FlexTalent">Flex-Job</option>
                                             <option value="PermanentJob">Permanent Job</option>
                                         </select>
 
@@ -50,11 +59,8 @@
                                         <label for="select-form" style="color: white">Job Type</label>
                                         <select class="form-control" name="job_type" id="select-form">
                                             <option selected disabled="">Choose one</option>
-                                            <option value="internship">Internship</option>
                                             <option value="Part_time">Part-Time</option>
                                             <option value="full_time">Full-Time</option>
-                                            <option value="Consultancy">Consultancy</option>
-
                                         </select>
 
                                     </div>

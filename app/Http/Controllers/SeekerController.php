@@ -23,10 +23,7 @@ class SeekerController extends Controller
              return redirect(route('flexjobs.create'))->with(compact('industry','location'));
         }elseif ($service == 'PermanentJob'){
              return redirect(route('jobs.create'))->with(compact('industry','location'));
-        }elseif ($service == 'level1'){
-             return redirect(route('mock.create'))->with(compact('industry','location','service'));
-        }elseif ($service == 'level2'){
-            return redirect(route('mock.create'))->with(compact('industry','location','service'));
         }
+        return redirect()->back()->with(['message'=>'Kindly provide us with values in the input boxes below']);
     }
 }

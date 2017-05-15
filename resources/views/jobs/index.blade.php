@@ -36,12 +36,19 @@
                     <div class="col-sm-6 col-md-offset-3">
                         <h1 class="text-master ">Your Permanent Job Profile</h1>
                     </div>
+
                 </div>
             </div>
         </div>
     </header>
+    @if(session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     @forelse($jobs as $job)
         <div class="row">
+
             <div class="col-md-6 col-lg-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -58,7 +65,7 @@
                         <p class="t-description">Other Qualification(s): {{$job->other_key_qualification}}</p>
                     </div>
                     <div class="panel-footer">
-                        <a class="btn btn-small" href="/jobs/{{$job->id}}">Read More</a>
+                        <a class="btn btn-small" href="/jobs/{{$job->id}}">View Full Profile</a>
                         <a class="btn btn-small" href="/jobs/{{$job->id}}/edit">Edit</a>
                     </div>
                 </div>

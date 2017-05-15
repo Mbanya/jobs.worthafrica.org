@@ -6,7 +6,7 @@
 @endsection
 
 @section('cover')
-    <header class="page-title pt-dark pt-plax-md-dark" data-stellar-background-ratio="0.3">
+    <header class="page-title pt-large pt-dark pt-plax-lg-dark" data-stellar-background-ratio="0.3">
         <div class="bg-overlay">
             <div class="container">
                 <div class="row">
@@ -16,7 +16,7 @@
                         <span class="subheading">Your Recent Flex Job Profile Posts </span>
                     </div>
                     <ol class="col-sm-6 text-right breadcrumb">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{route('index')}}">Home</a></li>
                         <li><a href="{{route('job_seeker')}}">Job Seeker</a></li>
                         <li class="active">Flex Jobs</li>
                     </ol>
@@ -43,6 +43,11 @@
     @forelse($flexjobs as $flexjob)
         <div class="row">
             <div class="col-md-6 col-lg-offset-3">
+                @if(session('message'))
+                    <div class="alert alert-success">
+                        {{session('message')}}
+                    </div>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h5>Profile For  <u>{{$flexjob->first_name}} {{$flexjob->last_name}}</u></h5>

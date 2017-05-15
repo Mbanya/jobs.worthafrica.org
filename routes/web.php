@@ -26,11 +26,6 @@ Route::group(['middleware'=>'individual'], function(){
     Route::resource('flexjobs','FlexJobController');
     Route::resource('consultants','ConsultantController');
     Route::resource('mock','MockController');
-
-
-
-
-
 });
 
 Route::group(['middleware'=>'organisation'], function(){
@@ -70,5 +65,6 @@ Route::post('employer','EmployerController@post');
 Route::post('seekers','SeekerController@post');
 Route::get('organisation','PagesController@organisation')->name('organisation');
 Route::get('seeker','PagesController@seeker')->name('seeker');
+
 
 

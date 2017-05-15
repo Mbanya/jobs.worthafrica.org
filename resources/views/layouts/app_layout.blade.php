@@ -83,7 +83,7 @@
                 <li class="dropdown">
                     @if(Sentinel::check())
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{Sentinel::getUser()->organisation_name}} <span class="caret"></span>
+                {{Sentinel::getUser()->email}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
@@ -96,9 +96,9 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
-                        <li>
-                            <a href="{{Sentinel::getUser()->getUserLoginName()}}">My profile</a>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="{{Sentinel::getUser()->getUserLoginName()}}">My profile</a>--}}
+                        {{--</li>--}}
                     </ul>
             @else
                 <li><a href="{{ route('login') }}">Login</a></li>

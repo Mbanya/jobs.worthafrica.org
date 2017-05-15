@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\JobFormRequest;
-use App\JobCover;
-use App\JobResume;
 use Illuminate\Http\Request;
+use File;
 use App\Job;
 
 class JobController extends Controller
@@ -40,41 +39,24 @@ class JobController extends Controller
     public function store(JobFormRequest $request)
     {
         $job= Job::create($request->all());
-        foreach($request->CV as $cv) {
-            $filename = $cv->store('CV');
-            JobResume::create([
-                'Job_id' => $job->id,
-                'filename' => $filename
-            ]);
+
+        if ($request->hasFile('CV')){
+            $cv = $request->file('CV');
+            $contents = time() . '.' . $cv->getClientOriginalExtension();
+            File:: put('/uploads/resume', $contents);
+            $job->CV =$contents;
+
+            if ($request->hasFile('cover_letter')){
+                $cover = $request->file('cover_letter');
+                $contents = time() . '.' . $cover->getClientOriginalExtension();
+                File:: put('/uploads/cover_letter', $contents);
+                $job->cover_letter =$contents;
+            }
+            $job->save();
+            return redirect(route('jobs.index'))->with(['message' => 'Your Permanent job request was received. Our Team will get back to You.']);
         }
-        foreach ($request->cover_letter as $cover){
-        $filename2 = $cover->store('cover_letter');
-        JobCover::create([
-            'Job_id' => $job->id,
-            'filename' => $filename2
-        ]);
-    }
     return redirect(route('jobs.index'))->with(['message' => 'Your Job profile was successfully posted.']);
     }
-//       $job = new Job(array(
-//           'user_id'=>$request->get('user_id'),
-//           'first_name'=>$request->get('first_name'),
-//           'last_name'=>$request->get('last_name'),
-//           'email'=>$request->get('email'),
-//           'Physical_Address'=>$request->get('Physical_Address'),
-//           'key_qualification'=>$request->get('key_qualification'),
-//           'other_key_qualification'=>$request->get('other_key_qualification'),
-//           'experience'=>$request->get('experience'),
-//           'skills'=>$request->get('skills'),
-//           'profession'=>$request->get('profession'),
-//           'availability'=>$request->get('availability'),
-//           'location'=>$request->get('location'),
-//           'job_type'=>$request->get('industry'),
-//       ));
-//        $job->save();
-//        return redirect(route('jobs.index'))->with(['message' => 'Your Job profile was successfully posted.']);
-
-
 
     /**
      * Display the specified resource.

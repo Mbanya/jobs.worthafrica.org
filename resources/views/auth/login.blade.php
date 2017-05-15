@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app_layout')
 @section('assets')
     <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
 <title>Login</title>

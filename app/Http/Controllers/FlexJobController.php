@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FlexJobRequest;
 use Illuminate\Http\Request;
+use File;
 use App\FlexJob;
 use Sentinel;
 
@@ -38,16 +40,25 @@ class FlexJobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FlexJobRequest $request)
     {
-        if (FlexJob::create($request->all()))
-            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Profile was received Thank you for registering with us']);
-        else {
-            return redirect()->back()->with([
-                'error' => 'There was a problem storing your job kindly try again.']);
+        $flexjob = FlexJob::create($request->all());
+        if ($request->hasFile('CV')){
+            $cv = $request->file('CV');
+            $filename = time() . '.' . $cv->getClientOriginalExtension();
+            File:: make($filename)->save( public_path('/uploads/resume/' . $filename ) );
+            $flexjob->CV =$filename;
+            $flexjob->save();
+            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Request was received. Our Team will get back to You.']);
         }
+        return redirect()->back()->with(['error'=>'There Was a problem Lodging your Request. Kindly Try Again.']);
     }
-
+//        if (FlexJob::create($request->all()))
+//            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Profile was received Thank you for registering with us']);
+//        else {
+//            return redirect()->back()->with([
+//                'error' => 'There was a problem storing your job kindly try again.']);
+//        }
     /**
      * Display the specified resource.
      *

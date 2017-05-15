@@ -42,7 +42,7 @@ class LoginController extends Controller
         } catch (ThrottlingException $e) {
             $delay = $e->getDelay();
             return redirect()->back()->with([
-                'error' => 'You are banned for $delay seconds. '
+                'error' => 'You are banned for 10 minutes. '
             ]);
 
         } catch (NotActivatedException $e) {

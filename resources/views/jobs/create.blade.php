@@ -67,17 +67,17 @@
                                         <!--First Name -->
                                         <div class="row">
                                             <div class="form-group col-md-6 no-gap-right {{ $errors->has('first_name') ? 'has-error' : '' }}">
-                                                <input type="text"  class="form-control" name="first_name" value="{{Sentinel::getUser()->first_name}}" placeholder=" Enter FirstName" required autofocus>
+                                                <input type="text"  class="form-control"  name="first_name" value="{{Sentinel::getUser()->first_name}}" placeholder=" Enter FirstName" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                                 <label for="txt-forms">First Name</label>
 
                                             </div>
                                             <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
                                             <input type="hidden" name="location" value="{{session('location')}}">
-                                            <input type="hidden" name="industry" value="{{session('job_type')}}">
+                                            <input type="hidden" name="industry" value="{{session('industry')}}">
                                             <!-- Last Name -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('last_name') ? 'has-error' : '' }}" >
-                                                <input type="text"  class="form-control" name="last_name" value="{{Sentinel::getUser()->last_name}}" placeholder=" Enter LastName" required autofocus>
+                                                <input type="text"  class="form-control"  name="last_name" value="{{Sentinel::getUser()->last_name}}" placeholder=" Enter LastName" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                                 <label for="txt-forms">Last Name</label>
                                             </div>

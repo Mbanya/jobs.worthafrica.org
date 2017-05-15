@@ -1,10 +1,9 @@
 @extends('layouts.forms_layout')
-@section('header')
-    <title>Permanent Jobs</title>
+@section('assets')
 @endsection
 @section('navigation')
 @endsection
-
+<title>Flex Jobs</title>
 @section('cover')
     <!-- ========== Page Title ========== -->
 
@@ -14,13 +13,13 @@
 
                 <div class="col-md-6">
                     <h1>Job Seekers</h1>
-                    <span class="subheading">Create Profile</span>
+                    <span class="subheading">Create Flex Job Request</span>
                 </div>
 
                 <ol class="col-md-6 text-right breadcrumb">
                     <li><a href="{{route('index')}}">Home</a></li>
                     <li><a href="{{url('services')}}">Services</a></li>
-                    <li class="active">Job Post</li>
+                    <li class="active">Flex Job Profile</li>
                 </ol>
 
             </div><!-- / .row -->
@@ -40,7 +39,7 @@
                     <div class="col-md-offset-1 col-md-10">
                         <div class="form-wrapper">
                             <div class="form-content">
-                                <h3 class="form-header">Permanent Jobs</h3>
+                                <h3 class="form-header">Flex Jobs</h3>
                                 @if(count($errors))
                                     <div class="alert alert-danger">
                                         <strong>Whoops!</strong> There were some problems with your input.
@@ -58,7 +57,7 @@
                                     </div>
 
                                 @endif
-                                <form action="/flexjob" role="form" method="POST" enctype="multipart/form-data">
+                                <form action="/flexjobs" role="form" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <!-- Organisation  Name -->
                                     <ol>
@@ -84,11 +83,9 @@
                                         <div class="row">
                                             <!-- Email -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('email') ? 'has-error' : '' }}" >
-                                                <div class="form-group col-md-10 no-gap-right {{ $errors->has('email') ? 'has-error' : '' }}">
                                                     <input type="email"  name="email" class="form-control" value="{{old('email')}}" placeholder="Enter contact email" required autofocus>
                                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                                     <label>Contact Email</label>
-                                                </div>
                                             </div>
                                             <!-- Location -->
                                             <div class="form-group col-md-6 no-gap-right{{ $errors->has('Physical_Address') ? 'has-error' : '' }}" >
