@@ -57,7 +57,7 @@
             <span class="icon-bar"></span>
         </button>
         <!-- Logo -->
-        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="" alt="Logo"></a>
+        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="{{asset('JOBS_1.png')}}" alt="Logo"></a>
     </div>
 
     <!-- Navbar Links -->

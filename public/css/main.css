@@ -3023,15 +3023,13 @@ fieldset[disabled] .form-control:hover {
 }
 
 .navbar-trans .navbar-logo {
-  content: url(../images/);
-  max-width: 114px;
-  max-height: 23px;
+  content: url(../);
+
 }
 
 .navbar-trans .navbar-logo-dark {
-  content: url(../images/);
-  max-width: 114px;
-  max-height: 23px;
+  content: url(../);
+
 }
 
 .navbar-trans:not(.navbar-inverse) .navbar-nav li a:focus,
@@ -3073,7 +3071,7 @@ fieldset[disabled] .form-control:hover {
 }
 
 .navbar-small {
-  min-height: 50px;
+  min-height: 60px;
 }
 
 .navbar-small .navbar-header {
