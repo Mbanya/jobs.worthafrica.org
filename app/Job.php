@@ -9,7 +9,7 @@ class Job extends Model
     protected $fillable =[
         'user_id','first_name','last_name','email','phone_number',
         'key_qualification','other_key_qualification','experience','skills',
-        'profession','availability','location','job_type'
+        'profession','availability','location','job_type','CV','cover_letter'
     ];
     public function user()
     {

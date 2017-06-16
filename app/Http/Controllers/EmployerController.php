@@ -12,10 +12,10 @@ class EmployerController extends Controller
         return view('pages.employer');
     }
 
-    public function post( ){
+    public function post(Request $request ){
         $service =  Input::get('service');
-        $industry = Input::get('job_type');
-        $location = Input::get('location');
+        $industry = $request->get('job_type');
+        $location = $request->get('location');
 
         if ($service == 'flex_hire'){
             return redirect(route('flexhire.create'))->with(compact('industry','location'));

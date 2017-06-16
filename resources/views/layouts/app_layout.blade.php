@@ -57,7 +57,7 @@
             <span class="icon-bar"></span>
         </button>
         <!-- Logo -->
-        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="" alt="Logo"></a>
+        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="{{'worthjobs.png'}}" style="max-width: 190px;" alt="Logo"></a>
     </div>
 
     <!-- Navbar Links -->

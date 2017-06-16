@@ -28,6 +28,8 @@ class CreateJobsTable extends Migration
             $table->date('availability');
             $table->string('location');
             $table->string('job_type');
+            $table->string('CV');
+            $table->string('cover_letter');
             $table->timestamps();
 
             $table->index('user_id');

@@ -20,9 +20,9 @@ class SeekerController extends Controller
         $location = Input::get('location');
 
         if ($service == 'FlexTalent'){
-             return redirect(route('flexjobs.create'))->with(compact('industry','location'));
+             return redirect(route('flexjobs.create'))->with(compact('industry'&&'location'));
         }elseif ($service == 'PermanentJob'){
-             return redirect(route('jobs.create'))->with(compact('industry','location'));
+             return redirect(route('jobs.create'))->with(compact('industry'&&'location'));
         }
         return redirect()->back()->with(['message'=>'Kindly provide us with values in the input boxes below']);
     }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobFormRequest;
 use Illuminate\Http\Request;
-use File;
 use App\Job;
 
 class JobController extends Controller
@@ -38,24 +37,29 @@ class JobController extends Controller
      */
     public function store(JobFormRequest $request)
     {
-        $job= Job::create($request->all());
-
-        if ($request->hasFile('CV')){
-            $cv = $request->file('CV');
-            $contents = time() . '.' . $cv->getClientOriginalExtension();
-            File:: put('/uploads/resume', $contents);
-            $job->CV =$contents;
-
-            if ($request->hasFile('cover_letter')){
-                $cover = $request->file('cover_letter');
-                $contents = time() . '.' . $cover->getClientOriginalExtension();
-                File:: put('/uploads/cover_letter', $contents);
-                $job->cover_letter =$contents;
-            }
-            $job->save();
+//
+        $CV = time().'.'.$request->CV->getClientOriginalExtension();
+        $request->CV->move(public_path('job/resume'), $CV);
+        $cover_letter = time().'.'.$request->cover_letter->getClientOriginalExtension();
+        $request->cover_letter->move(public_path('job/cover'), $cover_letter);
+        $job = new Job(array(
+            'user_id'=>$request->get('user_id'),
+            'first_name'=>$request->get('first_name'),
+            'last_name'=>$request->get('last_name'),
+            'email'=> $request->get('email'),
+            'phone_number'=> $request->get('phone_number'),
+            'key_qualification'=> $request->get('key_qualification'),
+            'other_key_qualification'=>$request->get('other_key_qualification'),
+            'experience'=>$request->get('experience'),
+            'skills'=> $request->get('skills'),
+            'profession'=> $request->get('profession'),
+            'availability'=>$request->get('profession'),
+            'CV' => $CV,
+            'cover_letter'=>$cover_letter
+        ));
+        $job->save();
             return redirect(route('jobs.index'))->with(['message' => 'Your Permanent job request was received. Our Team will get back to You.']);
-        }
-    return redirect(route('jobs.index'))->with(['message' => 'Your Job profile was successfully posted.']);
+
     }
 
     /**
@@ -100,7 +104,12 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+{
+    //
+}
+    public function search()
     {
-        //
+        return view('jobs.search');
     }
+
 }

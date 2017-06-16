@@ -59,7 +59,7 @@
             <span class="icon-bar"></span>
         </button>
         <!-- Logo -->
-        <a class="navbar-brand" href="{{url('index')}}"> <img class="navbar-logo" src="{{('jobs.png')}}"  alt="Logo"></a>
+        <a class="navbar-brand" href="{{url('index')}}"> <img class="navbar-logo" src="{{('image.png')}}"  alt="Logo"></a>
     </div>
 
     <!-- Navbar Links -->

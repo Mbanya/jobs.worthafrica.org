@@ -1,6 +1,13 @@
-@extends('layouts.forms_layout')
-@section('header')
+@extends('layouts.organisation_layout')
+@section('assets')
     <title>Job Filter</title>
+
+    <?php
+    $majors = file_get_contents('http://filter.worthafrica.org/site/publicdata?getmajors=true');
+    $industries = file_get_contents('http://filter.worthafrica.org/site/publicdata?getindustries=true');
+    $countries = file_get_contents('http://filter.worthafrica.org/site/publicdata?getcountries=true');
+    $departments = file_get_contents('http://filter.worthafrica.org/site/publicdata?getdepartments=true');
+    ?>
 @endsection
 @section('navigation')
 @endsection
@@ -19,7 +26,7 @@
 
                 <ol class="col-md-6 text-right breadcrumb">
                     <li><a href="{{route('index')}}">Home</a></li>
-                    <li><a href="{{url('services')}}">Services</a></li>
+                    <li><a href="{{url('organisation')}}">Services</a></li>
                     <li class="active">Job Post</li>
                 </ol>
 
@@ -58,44 +65,55 @@
                                     </div>
 
                                 @endif
-                                <form action="/posts" role="form" method="POST">
+                                <form action="/posts" role="form" id="application" method="POST">
                                 {{ csrf_field() }}
                                 <!-- Organisation  Name -->
                                     <ol>
                                         <li><h3 class="t-description">Organisation Details</h3></li>
                                         <div class="row">
                                             <div class="form-group col-md-5 no-gap-right {{ $errors->has('organisation_name') ? 'has-error' : '' }}">
-                                                <input type="text" disabled=""  value="{{Sentinel::getUser()->organisation_name}}"  class="form-control" name="organisation_name" placeholder=" Organisation Name" required autofocus>
+                                                <input type="text" disabled="" id="company_name"
+                                                       value="{{Sentinel::getUser()->organisation_name}}"
+                                                       class="form-control" name="organisation_name"
+                                                       placeholder=" Organisation Name" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('organisation_name') }}</span>
                                                 <label for="txt-forms">Organisation Name</label>
-
                                             </div>
-                                           <input type="hidden" name="user_id" value="{{Sentinel::getUser()->getUserId()}}">
+                                            <input type="hidden" name="user_id" id="wajobid"
+                                                   value="{{Sentinel::getUser()->getUserId()}}">
+                                            <input type="hidden" id="contact_person"
+                                                   value="{{Sentinel::getUser()->contact_name}}">
+                                            <input type="hidden" id="telephone"
+                                                   value="{{Sentinel::getUser()->phone_number}}">
                                             <!-- Organization Size -->
-                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('organisation_size') ? 'has-error' : '' }}" >
-                                                <input type="text"  disabled  name="organisation_size" class="form-control" value="{{Sentinel::getUser()->org_size}}">
-
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('organisation_size') ? 'has-error' : '' }}">
+                                                <input type="text" disabled name="organisation_size"
+                                                       class="form-control" value="{{Sentinel::getUser()->org_size}}">
                                                 <span class="text-danger">{{ $errors->first('organisation_size') }}</span>
                                                 <label for="txt-form">Organisation Size</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <!-- Organization type -->
-                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('organisation_type') ? 'has-error' : '' }}" >
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('organisation_type') ? 'has-error' : '' }}">
                                                 <select name="organisation_type" class="form-control" id="select-form">
                                                     <option selected disabled>Choose One</option>
                                                     <option value="Start-Up">Start-Up</option>
                                                     <option value="Agency">Agency</option>
                                                     <option value="SME">SME</option>
                                                     <option value="Large -Corporation">Large -Corporation</option>
-                                                    <option value="Governmental Institution">Governmental Institution</option>
+                                                    <option value="Governmental Institution">Governmental Institution
+                                                    </option>
                                                 </select>
                                                 <span class="text-danger">{{ $errors->first('organisation_type') }}</span>
                                                 <label for="select-form">Organisation Type</label>
                                             </div>
                                             <!-- Location -->
-                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('Physical_Address') ? 'has-error' : '' }}" >
-                                                <input type="text" disabled name="Physical_Address"value="{{Sentinel::getUser()->physical_address}}"  class="form-control" placeholder="Physical Address " required autofocus>
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('Physical_Address') ? 'has-error' : '' }}">
+                                                <input type="text" disabled name="Physical_Address"
+                                                       value="{{Sentinel::getUser()->physical_address}}"
+                                                       class="form-control" placeholder="Physical Address " required
+                                                       autofocus>
                                                 <span class="text-danger">{{ $errors->first('Physical_Address') }}</span>
                                                 <label>Physical Address</label>
                                             </div>
@@ -104,25 +122,42 @@
                                         <!-- Email -->
                                         <div class="row">
                                             <div class="form-group col-md-10 no-gap-right {{ $errors->has('email') ? 'has-error' : '' }}">
-                                                <input type="email"  disabled name="email" class="form-control" value="{{Sentinel::getUser()->email}}" placeholder="Enter contact email" required autofocus>
+                                                <input type="email" disabled name="email" id="email_address"
+                                                       class="form-control" value="{{Sentinel::getUser()->email}}"
+                                                       placeholder="Enter contact email" required autofocus>
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                                 <label>Contact Email</label>
                                             </div>
-                                            <div class="form-group col-md-10 no-gap-right {{ $errors->has('email') ? 'has-error' : '' }}">
-                                                <input type="email"   name="email" class="form-control"  placeholder="Enter email for recieving applications" required autofocus>
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                                <label>Email for recieving applications</label>
-                                            </div>
                                         </div>
-                                        <li><h3 class="t-description">Qualifications</h3> </li>
+                                        <li><h3 class="t-description">Job Details</h3></li>
                                         <div class="row">
-                                            <div class="form-group col-md-5 no-gap-right {{$errors->has('Job_title') ? 'has-error':''}}">
-                                                <input type="text" name="Job_title" class="form-control" placeholder="Job Title">
+                                            <div class="form-group col-md-10 no-gap-right {{$errors->has('Job_title') ? 'has-error':''}}">
+                                                <input type="text" name="Job_title" id="job_title" class="form-control"
+                                                       placeholder="Job Title">
                                                 <span class="text-danger">{{$errors->first('Job_title')}}</span>
                                                 <label for="txt-forms">Job Title</label>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-10 no-gap-right {{$errors->has('Job_title') ? 'has-error':''}}">
+                                                <textarea class="form-control" id="description" rows="8"
+                                                          placeholder=""></textarea>
+                                                <span class="text-danger">{{$errors->first('description')}}</span>
+                                                <label for="txt-forms">Job Title</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-5 no-gap-right{{$errors->has('country') ? 'has-error':''}}">
+                                                <select name="countryid" id="country_id" onchange="GetLocations();"
+                                                        class="form-control">
+                                                    <?php echo $countries; ?>
+                                                </select>
+                                                <span class="text-danger">{{$errors->first('country')}}</span>
+                                                <label for="txt-forms">Country</label>
+                                            </div>
                                             <div class="form-group col-md-5 no-gap-right{{$errors->has('location') ? 'has-error':''}}">
-                                                <input type="text" name="location" class="form-control" placeholder="location of the job">
+                                                <select name="locationid" id="location_id" class="form-control">
+                                                </select>
                                                 <span class="text-danger">{{$errors->first('location')}}</span>
                                                 <label for="txt-forms">Location</label>
                                             </div>
@@ -130,109 +165,178 @@
 
                                         <div class="row">
                                             <div class="form-group col-md-5 no-gap-right">
-                                                <select name="job_type" class="form-control {{ $errors->has('jobtype') ? 'has-error':'' }}">
+                                                <select id="job_type"
+                                                        class="form-control {{ $errors->has('jobtype') ? 'has-error':'' }}">
                                                     <option selected disabled>Chooser One</option>
-                                                    <option value="Part-Time">Part-Time</option>
-                                                    <option value="Internship">Internship</option>
-                                                    <option value="Voulunteer/Community Service">Volunteer/Community Service</option>
-                                                    <option value="Permanent">Permanent</option>
-                                                    <option value="Consultancy">Consultancy</option>
+                                                    <option value="1">Contract</option>
+                                                    <option value="4">Volunteer/Community Service</option>
+                                                    <option value="2">Permanent</option>
+                                                    <option value="3">Consultancy</option>
                                                 </select>
                                                 <span class="text-danger">{{$errors->first('job_type')}}</span>
                                                 <label for="select-form">Job Type</label>
                                             </div>
                                             <div class="form-group col-md-5 no-gap-right {{$errors ->has('reference_code')?'has-error':''}}">
-                                                <input class="form-control" name="reference_code" placeholder="Reference Number for the Job ">
-                                                <span class="text-danger">{{$errors->first('reference_code')}}</span>
-                                                <label for="txt-forms">Reference Number</label>
+                                                <select name="industry_id" id="industry_id"
+                                                        class="form-control {{ $errors->has('jobtype') ? 'has-error':'' }}">
+                                                    <?php echo $industries ?>
+                                                </select>
+                                                <label for="txt-forms">Industry</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('key_qualification') ? 'has-error' : '' }}">
-                                                <select name="key_qualification" class="form-control" id="select-form">
-                                                    <option selected disabled>Choose One</option>
-                                                    <option value="Form 4 graduate">Form 4 Graduate</option>
-                                                    <option value="Certificate Program">Certificate Program</option>
-                                                    <option value="Diploma">Diploma</option>
-                                                    <option value="Masters/PHD">Masters/PHD</option>
-                                                    <option value="Doesnt Matter">Doesn't Matter</option>
+                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('major_id') ? 'has-error' : '' }}">
+                                                <select name="major_id" id="major_id" class="form-control">
+                                                    <?php echo $majors; ?>
                                                 </select>
-                                                <span class="text-danger">{{ $errors->first('key_qualification') }}</span>
-                                                <label for="select-form">Highest education</label>
+                                                <span class="text-danger">{{ $errors->first('major_id') }}</span>
+                                                <label for="select-form">Major</label>
                                             </div>
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('Qualification_Description') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name=" Qualification_Description" id="txt-forms" rows="10" placeholder="Do candidates need education in a specific subject (e.g. diploma or degree in marketing or communication)? If so, please indicate further here."></textarea>
-                                                <span class="text-danger">{{ $errors->first('Qualification_Description') }}</span>
-
-
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('experience') ? 'has-error' : '' }}">
-                                                <select name="experience" class="form-control" id="select-form">
-                                                    <option selected disabled>Years of working experience</option>
-                                                    <option value="Under 3 years">Under 3 years</option>
-                                                    <option value="4-15 years">4-15 years-</option>
-                                                    <option value="Above 15 years">Above 15 years</option>
+                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('major_id') ? 'has-error' : '' }}">
+                                                <select name="department_id" id="department_id" class="form-control">
+                                                    <?php echo $departments; ?>
                                                 </select>
-                                                <span class="text-danger">{{ $errors->first('experience') }}</span>
-                                                <label for="select-form">Years of Experience</label>
+                                                <span class="text-danger">{{ $errors->first('department_id') }}</span>
+                                                <label for="select-form">Department</label>
                                             </div>
                                         </div>
                                         <li><h3 class="t-description">Requirements</h3></li>
                                         <div class="row">
                                             <div class="form-group col-md-10 no-gap-right{{ $errors->has('Responsibilities') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name="Responsibilities" id="txt-forms" rows="8" placeholder="What are the tasks that the person will be responsible for on a day to day basis? (e.g. Plan weekly travel arrangements for the CEO, clean up viruses from office computers)"></textarea>
+                                                <textarea class="form-control" id="responsibilities" rows="5"
+                                                          placeholder="What are the tasks that the person will be responsible for on a day to day basis? (e.g. Plan weekly travel arrangements for the CEO, clean up viruses from office computers)"></textarea>
                                                 <span class="text-danger">{{ $errors->first('Responsibilities') }}</span>
                                                 <label for="txt-forms">Key Responsibilities</label>
                                             </div>
                                             <div class="form-group col-md-10 no-gap-right{{ $errors->has('skills') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name="skills" rows="7" placeholder="What are the key skills required for this job Example (Software Development, Google Digital Marketing...etc)"> </textarea>
+                                                <textarea class="form-control" id="requirements" rows="5"
+                                                          placeholder="What are the key skills required for this job Example (Software Development, Google Digital Marketing...etc)"> </textarea>
                                                 <span class="text-danger">{{ $errors->first('skills') }}</span>
-                                                <label for="txt-forms">Key Skills</label>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-5 no-gap-right{{ $errors->has('minSal') ? 'has-error' : '' }}">
-                                                    <input type="number" class="form-control" name="minSal" placeholder="Minimum salary">
-                                                    <span class="text-danger">{{ $errors->first('minSal') }}</span>
-                                                    <label for="nbr-form">Minimum Salary</label>
-                                                </div>
-                                                <div class="form-group col-md-5 no-gap-right{{ $errors->has('maxSal') ? 'has-error' : '' }}">
-                                                    <input type="number" class="form-control" name="maxSal" placeholder="Maximum salary ">
-                                                    <span class="text-danger">{{ $errors->first('maxSal') }}</span>
-                                                    <label for="nbr-form">Maximum Salary</label>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <!-- Date -->
-                                                <div class="form-group col-md-10 no-gap-right{{ $errors->has('start_date') ? 'has-error' : '' }}">
-                                                    <input class="form-control" type="date" name="start_date" id="date-form">
-                                                    <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                                    <label for="date-form">Expected Start Date</label>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="submit" class="btn pull-left" value="Submit Job">
+                                                <label for="txt-forms">Key Requirements / Skills</label>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('minSal') ? 'has-error' : '' }}">
+                                                <input type="number" class="form-control" name="minSal"
+                                                       placeholder="Minimum salary">
+                                                <span class="text-danger">{{ $errors->first('minSal') }}</span>
+                                                <label for="nbr-form">Minimum Salary</label>
+                                            </div>
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('maxSal') ? 'has-error' : '' }}">
+                                                <input type="number" class="form-control" name="maxSal"
+                                                       placeholder="Maximum salary ">
+                                                <span class="text-danger">{{ $errors->first('maxSal') }}</span>
+                                                <label for="nbr-form">Maximum Salary</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <!-- Date -->
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('start_date') ? 'has-error' : '' }}">
+                                                <input class="form-control" type="date" name="start_date"
+                                                       id="date-form">
+                                                <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                                <label for="date-form">Expected Start Date</label>
+                                            </div>
+                                            <div class="form-group col-md-5 no-gap-right{{ $errors->has('') ? 'has-error' : '' }}">
+                                                <input class="form-control" type="date" name="deadline" id="deadline">
+                                                <span class="text-danger">{{ $errors->first('deadline') }}</span>
+                                                <label for="date-form">Application Deadline</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <input type="submit" class="btn pull-left" value="Submit Job"
+                                                       onclick="event.preventDefault(); PostApplication();">
+                                            </div>
+                                        </div>
+
                                     </ol>
                                 </form>
                             </div> <!--/ .form-content-->
                         </div> <!-- / .form-wrapper-->
-                            </div><!-- / .col-md-10 -->
-                        </div><!-- / .row -->
-                    </div><!-- / .container -->
-                </div> <!-- / .big-overlay-->
-            </div> <!-- / .bg-login-2 -->
+                    </div><!-- / .col-md-10 -->
+                </div><!-- / .row -->
+            </div><!-- / .container -->
+        </div> <!-- / .big-overlay-->
+    </div> <!-- / .bg-login-2 -->
 
 @endsection
 
 @section('footer')
 @endsection
 @section('scripts')
-
+    <script type="text/javascript">
+        function GetLocations() {
+            var link = 'http://filter.worthafrica.org/site/publicdata';
+            var countryid = document.getElementById('country_id').value;
+            jQuery.ajax({
+                url: link,
+                type: 'POST',
+                data: {
+                    'getlocations': countryid
+                },
+                cache: false,
+                success: function (data) {
+                    $('#location_id').html(data);
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function PostApplication() {
+            var link = 'http://filter.worthafrica.org/site/companydata';
+            var company_name = document.getElementById('company_name').value;
+            var wajobid = document.getElementById('wajobid').value;
+            var email_address = document.getElementById('email_address').value;
+            var contact_person = document.getElementById('contact_person').value;
+            var telephone = document.getElementById('telephone').value;
+            var job_title = document.getElementById('job_title').value;
+            var industry_id = document.getElementById('industry_id').value;
+            var location_id = document.getElementById('location_id').value;
+            var description = document.getElementById('description').value;
+            var responsibilities = document.getElementById('responsibilities').value;
+            var requirements = document.getElementById('requirements').value;
+            var job_type = document.getElementById('job_type').value;
+            var country_id = document.getElementById('country_id').value;
+            var deadline = document.getElementById('deadline').value;
+            var department_id = document.getElementById('department_id').value;
+            var major_id = document.getElementById('major_id').value;
+            jQuery.ajax({
+                url: link,
+                type: 'POST',
+                data: {
+                    'wajobsdata': true,
+                    'wajobid': wajobid,
+                    'company_name': company_name,
+                    'email_address': email_address,
+                    'contact_person': contact_person,
+                    'telephone': telephone,
+                    'job_title': job_title,
+                    'industry_id': industry_id,
+                    'location_id': location_id,
+                    'description': description,
+                    'responsibilities': responsibilities,
+                    'requirements': requirements,
+                    'job_type': job_type,
+                    'country_id': country_id,
+                    'deadline': deadline,
+                    'department_id': department_id,
+                    'major_id': major_id
+                },
+                cache: false,
+                success: function (data) {
+//                    $('#jobdetails').html('Added successfully, please check your email address for details.');
+                    alert('Added successfully, please check your email address for details.');
+                    $('#application').submit();
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
 @stop

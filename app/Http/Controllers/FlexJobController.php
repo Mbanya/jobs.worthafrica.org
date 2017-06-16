@@ -42,17 +42,25 @@ class FlexJobController extends Controller
      */
     public function store(FlexJobRequest $request)
     {
-        $flexjob = FlexJob::create($request->all());
-        if ($request->hasFile('CV')){
-            $cv = $request->file('CV');
-            $filename = time() . '.' . $cv->getClientOriginalExtension();
-            File:: make($filename)->save( public_path('/uploads/resume/' . $filename ) );
-            $flexjob->CV =$filename;
+        $CV = time().'.'.$request->CV->getClientOriginalExtension();
+        $request->CV->move(public_path('flexjob/resume'), $CV);
+        $flexjob = new FlexJob(array(
+            'user_id'=>$request->get('user_id'),
+            'first_name'=>$request->get('first_name'),
+            'last_name'=>$request->get('last_name'),
+            'email'=> $request->get('email'),
+            'phone_number'=> $request->get('phone_number'),
+            'key_qualification'=> $request->get('key_qualification'),
+            'other_key_qualification'=>$request->get('other_key_qualification'),
+            'experience'=>$request->get('experience'),
+            'skills'=> $request->get('skills'),
+            'profession'=> $request->get('profession'),
+            'availability'=>$request->get('profession'),
+            'CV' => $CV,
+    ));
             $flexjob->save();
             return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Request was received. Our Team will get back to You.']);
         }
-        return redirect()->back()->with(['error'=>'There Was a problem Lodging your Request. Kindly Try Again.']);
-    }
 //        if (FlexJob::create($request->all()))
 //            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Profile was received Thank you for registering with us']);
 //        else {

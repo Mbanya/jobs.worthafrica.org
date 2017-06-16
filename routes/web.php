@@ -65,6 +65,7 @@ Route::post('employer','EmployerController@post');
 Route::post('seekers','SeekerController@post');
 Route::get('organisation','PagesController@organisation')->name('organisation');
 Route::get('seeker','PagesController@seeker')->name('seeker');
+Route::get('board','JobController@search')->name('board');
 
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.forms_layout')
 @section('header')
-    <title>Build Profile</title>
 @endsection
 @section('navigation')
+    <title>Build Profile</title>
 @endsection
 
 @section('cover')

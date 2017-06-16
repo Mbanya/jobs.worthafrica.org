@@ -113,7 +113,7 @@
                                         </div>
                                         <li><h3 class="t-description">Qualifications</h3> </li>
                                         <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('key_qualification') ? 'has-error' : '' }}">
+                                            <div class="form-group col-md-12 no-gap-right{{ $errors->has('key_qualification') ? 'has-error' : '' }}">
                                                 <select name="key_qualification" class="form-control" id="select-form">
                                                     <option selected disabled>Choose One</option>
                                                     <option value="Form 4 graduate">Form 4 Graduate</option>
@@ -125,15 +125,13 @@
                                                 <span class="text-danger">{{ $errors->first('key_qualification') }}</span>
                                                 <label for="select-form">Highest education</label>
                                             </div>
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('Qualification_Description') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name=" Qualification_Description" id="txt-forms" rows="10" placeholder="Do candidates need education in a specific subject (e.g. diploma or degree in marketing or communication)? If so, please indicate further here."></textarea>
+                                            <div class="form-group col-md-12 no-gap-right{{ $errors->has('Qualification_Description') ? 'has-error' : '' }}">
+                                                <textarea class="form-control" name=" Qualification_Description" id="txt-forms" rows="5" placeholder="Do candidates need education in a specific subject (e.g. diploma or degree in marketing or communication)? If so, please indicate further here."></textarea>
                                                 <span class="text-danger">{{ $errors->first('Qualification_Description') }}</span>
-
-
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('experience') ? 'has-error' : '' }}">
+                                            <div class="form-group col-md-12 no-gap-right{{ $errors->has('experience') ? 'has-error' : '' }}">
                                                 <select name="experience" class="form-control" id="select-form">
                                                     <option selected disabled>Years of working experience</option>
                                                     <option value="Under 3 years">Under 3 years</option>
@@ -146,47 +144,45 @@
                                         </div>
                                         <li><h3 class="t-description">Requirements</h3></li>
                                         <div class="row">
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('Responsibilities') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name="Responsibilities" id="txt-forms" rows="8" placeholder="What are the tasks that the person will be responsible for on a day to day basis? (e.g. Plan weekly travel arrangements for the CEO, clean up viruses from office computers)"></textarea>
+                                            <div class="form-group col-md-12 no-gap-right{{ $errors->has('Responsibilities') ? 'has-error' : '' }}">
+                                                <textarea class="form-control" name="Responsibilities" id="txt-forms" rows="5" placeholder="What are the tasks that the person will be responsible for on a day to day basis? (e.g. Plan weekly travel arrangements for the CEO, clean up viruses from office computers)"></textarea>
                                                 <span class="text-danger">{{ $errors->first('Responsibilities') }}</span>
                                                 <label for="txt-forms">Key Responsibilities</label>
                                             </div>
-                                            <div class="form-group col-md-10 no-gap-right{{ $errors->has('skills') ? 'has-error' : '' }}">
-                                                <textarea class="form-control" name="skills" rows="7" placeholder="What are the key skills required for this job Example (Software Development, Google Digital Marketing...etc)"> </textarea>
+                                            <div class="form-group col-md-12 no-gap-right{{ $errors->has('skills') ? 'has-error' : '' }}">
+                                                <textarea class="form-control" name="skills" id="txt-forms" rows="5" placeholder="What are the key skills required for this job Example (Software Development, Google Digital Marketing...etc)"> </textarea>
                                                 <span class="text-danger">{{ $errors->first('skills') }}</span>
                                                 <label for="txt-forms">Key Skills</label>
-
                                             </div>
+                                        </div>
                                             <div class="row">
-                                                <div class="form-group col-md-5 no-gap-right{{ $errors->has('minSal') ? 'has-error' : '' }}">
+                                                <div class="form-group col-md-6 no-gap-right{{ $errors->has('minSal') ? 'has-error' : '' }}">
                                                     <input type="number" class="form-control"name="minSal" placeholder="Minimum salary">
                                                     <span class="text-danger">{{ $errors->first('minSal') }}</span>
                                                     <label for="nbr-form">Minimum Salary</label>
                                                 </div>
-                                                <div class="form-group col-md-5 no-gap-right{{ $errors->has('maxSal') ? 'has-error' : '' }}">
+                                                <div class="form-group col-md-6 no-gap-right{{ $errors->has('maxSal') ? 'has-error' : '' }}">
                                                     <input type="number" class="form-control" name="maxSal" placeholder="Maximum salary ">
                                                     <span class="text-danger">{{ $errors->first('maxSal') }}</span>
                                                     <label for="nbr-form">Maximum Salary</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="row">
                                                 <!-- Date -->
-                                                <div class="form-group col-md-5 no-gap-right{{ $errors->has('start_date') ? 'has-error' : '' }}">
+                                                <div class="form-group col-md-12 no-gap-right{{ $errors->has('start_date') ? 'has-error' : '' }}">
                                                     <input class="form-control" type="date" name="start_date" id="date-form">
                                                     <span class="text-danger">{{ $errors->first('start_date') }}</span>
                                                     <label for="date-form">Expected Start Date</label>
                                                 </div>
-
                                             </div>
+                                        <div class="row">
                                             <div class="form-group">
                                                 <input type="submit" class="btn pull-left" value="Submit Job">
                                             </div>
                                         </div>
                                     </ol>
                                 </form>
-
                             </div><!-- / .col-md-10 -->
                         </div><!-- / .row -->
                     </div><!-- / .container -->

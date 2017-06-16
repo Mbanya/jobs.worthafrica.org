@@ -27,10 +27,10 @@ class LoginController extends Controller
             if (Sentinel::authenticate($request->all(), $rememberMe)) {
                if ($user =Sentinel::getUser()){
                    if ($user->inRole('individual')){
-                       return redirect('/seekers');
+                       return redirect('/seeker');
 
                    }elseif ($user->inRole('organisation')){
-                       return redirect('/employer');
+                       return redirect('/organisation');
                    }
                }
 
