@@ -7,7 +7,7 @@
         }
         .search-sidebar h3 {
             line-height: 1.1em;
-            border-bottom: solid 5px #ffbe02;
+            border-bottom: solid 5px #111;
             font-size: 18px;
             margin-top: 15px;
         }
@@ -57,7 +57,7 @@
             padding: 0px;
         }
         .res-toolbar {
-            background: #ffbe02;
+            background: #111;
             color: #fff;
             height: 36px;
             line-height: 36px;

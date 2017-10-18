@@ -1,8 +1,11 @@
 @extends('layouts.layout')
-<title>Pricing</title>
 @section('assets')
+    <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
+
 @endsection
 @section('navigation')
+    <title>Pricing</title>
+
 @endsection
 
 @section('cover')
@@ -40,89 +43,46 @@
     </section>
 
     <!-- ========== Footer Contact ========== -->
-    <footer class="footer-contact">
-        <div class="container-fluid">
+    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker ">
+
+        <div class="container">
             <div class="row">
+                <div class="col-sm-4 col-xs-12 xs-m-b-40">
+                    <p class="" style="color: white;">Worth-Jobs is your premier source for quality recruiting services, dedicated to offering quality services with integrity.</p>
+                </div>
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Other Services </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
+                        <li class="m-b-5 no-padding"><a href="http://nexus.worthafrica.org/" class="link text-white ">Nexus</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
+                    </ul>
+                </div>
 
-                <!-- Map and address -->
-                <div class="col-lg-6 no-gap contact-info">
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Pages </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Looking for a Job</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white">Looking to Hire</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('pricing')}}" class="link text-white">Pricing</a></li>
 
-                    <!-- Show Info Button -->
+                    </ul>
+                </div>
+                <div class="col-sm-2 col-xs-6 xs-m-b-20">
+                    <h6 class="font-montserrat text-uppercase fs-14 text-white p-b-10">Links </h6>
+                    <ul class="no-style">
+                        <li class="m-b-5 no-padding"><a href="{{url('/contact')}}" class="link text-white">Contact Us</a></li>
+                        <li class="m-b-5 no-padding"><a href="{{route('about')}}" class="link text-white">About Us</a></li>
+                        <li class="m-b-5 no-padding"><a href="" class="link text-white">Terms & Conditions</a></li>
+                        <li class="m-b-5 no-padding"><a href="" class="link text-white">Privacy Policy</a></li>
 
-                    <div id="map-canvas" class="footer-map"></div>
-
-                    <address class="contact-info-wrapper">
-                        <ul>
-                            <!-- Address -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Address</span>
-                                <span class="adr-info">Greenhouse Ngong Rd, <br>3rd Floor West Wing, Suite 2</span>
-                            </li>
-                            <!-- Email -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Email</span>
-                                <span class="adr-info">info@worthafrica.org</span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <!-- Phone -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Phone</span>
-                                <span class="adr-info">+254 732 548 039</span>
-                            </li>
-                            <!-- Mobile -->
-                            <li class="contact-group">
-                                <span class="adr-heading">Alternative </span>
-                                <span class="adr-info">+ 254 723 754 861</span>
-                            </li>
-                        </ul>
-
-                    </address>
-
-                </div><!-- / .col-lg-6 -->
-
-
-                <!-- Contact Form -->
-                <div class="col-lg-6 no-gap section contact-form">
-                    <header class="sec-heading">
-                        <h2>Contact</h2>
-                        <span class="subheading">We would love to hear from you</span>
-                    </header>
-
-                    <form action="" method="POST" class="form-ajax wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-
-                        <!-- Name -->
-                        <div class="form-group">
-                            <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="Enter your name">
-                            <label for="name-contact-1">Name</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="form-group">
-                            <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="Enter your email">
-                            <label for="email-contact-1">Email</label>
-                            <span class="pull-right alert-error"></span>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" id="message-contact-1" rows="5" placeholder="Your Message"></textarea>
-                            <label for="message-contact-1">Message</label>
-                        </div>
-                        <input type="submit" class="btn pull-right" value="Send Message">
-
-                        <!-- Ajax Message -->
-                        <div class="ajax-message col-md-12 no-gap"></div>
-
-                    </form>
-                </div><!-- / .col-lg-6 -->
-
-            </div><!-- / .row -->
-        </div><!-- / .container-fluid -->
-
-
-    </footer><!-- / .footer-contact -->
+                    </ul>
+                </div>
+            </div>
+            <p class="fs-12 hint-text p-t-10 text-white">Copyright &copy; 2017. All Rights Reserved </p>
+        </div>
+    </section>
 @endsection
 
 

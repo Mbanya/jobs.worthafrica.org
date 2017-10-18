@@ -21,6 +21,7 @@
                     <li class="m-b-5 no-padding"><a href="#" class="link text-white ">Flex Hire</a></li>
                     <li class="m-b-5 no-padding"><a href="#" class="link text-white ">Flex Jobs</a></li>
                     <li class="m-b-5 no-padding"><a href="#" class="link text-white ">Consult hub</a></li>
+                    <li class="m-b-5 no-padding"><a href="#" class="link text-white ">For Medics</a></li>
                     <li class="m-b-5 no-padding"><a href="#" class="link text-white">Mock Interviews</a></li>
                 </ul>
             </div>

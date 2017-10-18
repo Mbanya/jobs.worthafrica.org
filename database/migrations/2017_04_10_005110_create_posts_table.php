@@ -16,18 +16,15 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->string('Job_title');
-            $table->string('location');
-            $table->string('email');
-            $table->string('reference_code');
-            $table->string('key_qualification');
-            $table->longText('Qualification_Description')->nullable();
-            $table->string('experience');
-            $table->longText('Responsibilities')->nullable();
-            $table->longText('skills')->nullable();
+            $table->string('email_address');
+            $table->string('job_title');
+            $table->longText('description');
+            $table->longText('responsibilities')->nullable();
+            $table->longText('requirements');
             $table->integer('minSal')->nullable();
             $table->integer('maxSal')->nullable();
             $table->date('start_date');
+            $table->date('deadline');
             $table->timestamps();
 
             $table->index('user_id');

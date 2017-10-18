@@ -169,22 +169,6 @@
           </div><!-- / .gray-bg -->
 
 
-          <!-- Social Links -->
-          <div class="dark-bg">
-            <div class="container footer-social-links">
-              <div class="row">
-
-                <ul>
-                  <li><a href="#">facebook</a></li>
-                  <li><a href="#">Twitter</a></li>
-                  <li><a href="#">Linkedin</a></li>
-                </ul>
-
-              </div>
-            </div><!-- / .container -->
-          </div><!-- / .dark-bg -->
-
-
           <!-- Copyright -->
           <div class="copyright">
             <div class="container">

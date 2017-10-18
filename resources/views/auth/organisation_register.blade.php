@@ -106,7 +106,7 @@
                                                     </div>
                                                     <!-- Password -->
                                                     <div class="form-group col-md-6 no-gap-right">
-                                                        <input type="password" name="confirm_password"  class="form-control" placeholder="Enter a password" required autofocus>
+                                                        <input type="password" name="password_confirmation"  class="form-control" placeholder="Enter a password" required autofocus>
                                                         <label for="pass-signup-1">Confirm Password</label>
                                                     </div>
                                                 </div>

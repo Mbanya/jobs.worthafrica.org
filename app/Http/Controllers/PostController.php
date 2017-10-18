@@ -5,6 +5,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use function view;
 
 
 class PostController extends Controller
@@ -28,6 +29,7 @@ class PostController extends Controller
         $post= Post::all();
         return view('posts.list', compact('title', 'post'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -126,4 +128,6 @@ class PostController extends Controller
 
         return $this->sendTo($to, $subject, $view, $data);
     }
+
+
 }

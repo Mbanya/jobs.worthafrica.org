@@ -19,6 +19,10 @@ Route::get('success','PagesController@success')->name('success');
 Route::get('/login','Auth\LoginController@showLogin')->name('login');
 Route::post('/login','Auth\LoginController@postLogin');
 Route::post('/jflogin','Auth\LoginController@jflogin')->name('jflogin');
+Route::get('/filter_login', 'Auth\LoginController@showJobFilterLogin')->name('jobfilterLogin');
+Route::post('/filter_login', 'Auth\LoginController@postJobFilterLogin');
+
+
 
 
 Route::group(['middleware'=>'individual'], function(){
@@ -26,17 +30,7 @@ Route::group(['middleware'=>'individual'], function(){
     Route::resource('flexjobs','FlexJobController');
     Route::resource('consultants','ConsultantController');
     Route::resource('mock','MockController');
-});
-
-Route::group(['middleware'=>'organisation'], function(){
-    Route::resource('flexhire','FlexHireController');
-    Route::resource('hire','HireController');
-    Route::get('success','PagesController@success')->name('success');
-    Route::resource('tor','TorController');
-    Route::resource('posts','PostController');
-
-
-
+    Route::get('board','JobController@search')->name('board');
 
 });
 
@@ -46,17 +40,32 @@ Route::group(['middleware'=>'visitors'], function(){
     Route::post('/register','Auth\RegisterController@postRegister');
     Route::get('/organisation_register','Auth\RegisterController@showOrgRegister')->name('organisation_register');
     Route::post('/organisation_register','Auth\RegisterController@postOrgRegister');
+    Route::post('/jobfilterregister','Auth\RegisterController@postJobFilterRegister');
+    Route::get('/jobfilterregister','Auth\RegisterController@showJobFilterRegister')->name('jobfilterregister');
     Route::get('/forgot-password','ForgotPasswordController@Forgotpassword')->name('forgot-password');
     Route::post('/forgot-password','ForgotPasswordController@postForgotpassword');
     Route::get('/reset/{email}/{resetCode}','ForgotPasswordController@resetPassword');
 
+});
 
+//Job Filter & Organisation
+Route::group(['middleware'=>'jobfilter','organisation','individual'],function(){
 
-
+    Route::resource('dashboard','DashboardController');
+    Route::get('/hire','DashboardController@hire')->name('findTalent');
+    Route::get('/flexhire','DashboardController@flexhire')->name('flexhire');
+    Route::get('/jobfilter','DashboardController@jobfilter')->name('jobfilter');
+    Route::post('/flexhire','DashboardController@Postflexhire');
+    Route::post('/hire','DashboardController@Posthire')->name('findTalent');
+    Route::get('/profile','DashboardController@profile')->name('profile');
+    Route::post('/jobfilter','DashboardController@postJobfilter');
+    Route::resource('tor','TorController');
+    Route::resource('posts','PostController');
 });
 
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
+Route::get('/activate_jobfilter/{email}/{activationCode}', 'ActivationController@jobfilter');
 Route::get('/profile/{email}','ProfileController@profile');
 Route::get('seekers','SeekerController@home')->name('job_seeker');
 Route::get('employer','EmployerController@home')->name('employer');
@@ -64,8 +73,8 @@ Route::get('mock','SeekerController@mock')->name('mock');
 Route::post('employer','EmployerController@post');
 Route::post('seekers','SeekerController@post');
 Route::get('organisation','PagesController@organisation')->name('organisation');
+Route::get('account','PagesController@account')->name('account');
 Route::get('seeker','PagesController@seeker')->name('seeker');
-Route::get('board','JobController@search')->name('board');
 
 
 

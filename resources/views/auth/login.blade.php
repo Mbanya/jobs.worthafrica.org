@@ -116,7 +116,7 @@
                       <div class="panel bottom-panel panel-default">
                           <div class="panel-heading" role="tab" id="headingTwo">
                               <h4 class="panel-title">
-                                  <a class="collapsed" role="button"  href="{{route('register')}}" >
+                                  <a class="collapsed" role="button"  href="{{route('account')}}" >
                                       Register account
                                   </a>
                               </h4>

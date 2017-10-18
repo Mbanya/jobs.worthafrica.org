@@ -2,8 +2,8 @@
 @section('assets')
 @endsection
 @section('navigation')
+    <title>Flex Jobs</title>
 @endsection
-<title>Flex Jobs</title>
 @section('cover')
     <!-- ========== Page Title ========== -->
 

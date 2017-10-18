@@ -1,8 +1,9 @@
 @extends('layouts.organisation_layout')
 @section('header')
-    <title>Flex Hire Edit</title>
 @endsection
 @section('navigation')
+    <title>Flex Hire Edit</title>
+
 @endsection
 
 @section('cover')

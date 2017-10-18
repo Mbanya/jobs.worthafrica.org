@@ -32,7 +32,6 @@ class CreateJobsTable extends Migration
             $table->string('cover_letter');
             $table->timestamps();
 
-            $table->index('user_id');
         });
     }
 

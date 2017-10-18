@@ -28,7 +28,7 @@
                     <div class="heading-block align-center centered-block">
                             <div class="signup-wrapper align-center">
                                 <div class="row">
-                                    <form class="form form-inline form-register form-register-small"  role="form" method="post" action="/employer">
+                                    <form class="form form-inline form-register form-register-small"  role="form" method="post" action="/employer" style="display: none">
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="select-form" style="color: white;">Service Type</label>
@@ -36,6 +36,8 @@
                                                 <option selected disabled>Choose one</option>
                                                 <option value="flex_hire">Flex-Hire</option>
                                                 <option value="permanent_hire">Permanent Hire</option>
+                                                <option value="TOR">TOR</option>
+
                                             </select>
 
                                         </div>
@@ -47,12 +49,14 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="select-form" style="color: white">Job Type</label>
+                                            <label for="select-form" style="color: white">Availability</label>
                                             <select class="form-control" name="job_type" id="select-form">
                                                 <option selected disabled>Choose one</option>
-                                                <option value="internship">Internship</option>
-                                                <option value="part_time">Part-Time</option>
-                       an                         <option value="full_time">Full-Time</option>
+                                                <option value="1 week">1 week</option>
+                                                <option value="2 weeks">2 weeks</option>
+                                                <option value="3 weeks">3 weeks</option>
+                                                <option value="1 month">1 month</option>
+                                                <option value="3 months">3 months</option>
                                             </select>
 
                                         </div>
@@ -64,7 +68,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <a href="#about" class="btn btn-light wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Learn More</a>
+
+                </div>
                 </div>
 
             <!-- Scroller -->
@@ -320,7 +326,7 @@
                     <ul class="no-style">
                         <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
-                        <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                        <li class="m-b-5 no-padding"><a href="http://nexus.worthafrica.org/" class="link text-white ">Nexus</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
                     </ul>
                 </div>

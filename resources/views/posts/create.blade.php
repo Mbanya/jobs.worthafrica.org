@@ -204,7 +204,9 @@
                                         <div class="row">
                                             <div class="form-group col-md-10 no-gap-right{{ $errors->has('Responsibilities') ? 'has-error' : '' }}">
                                                 <textarea class="form-control" id="responsibilities" rows="5"
-                                                          placeholder="What are the tasks that the person will be responsible for on a day to day basis? (e.g. Plan weekly travel arrangements for the CEO, clean up viruses from office computers)"></textarea>
+                                                          placeholder="What are the tasks that the person will be responsible for on a
+                                                           day to day basis? (e.g. Plan weekly travel arrangements for the CEO,
+                                                            clean up viruses from office computers)"></textarea>
                                                 <span class="text-danger">{{ $errors->first('Responsibilities') }}</span>
                                                 <label for="txt-forms">Key Responsibilities</label>
                                             </div>

@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <html lang="{{ config('app.locale') }}">
 
 <!-- Mirrored from pivot.mediumra.re/home-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2017 08:01:52 GMT -->

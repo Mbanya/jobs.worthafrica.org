@@ -10,10 +10,16 @@ use URL;
 class Post extends Model
 {
     protected $fillable =[
-        'user_id','organisation_type','email','Job_title','location',
-        'job_type','reference_code','key_qualification',
-        'Qualification_Description','experience',
-        'Responsibilities','skills','minSal','maxSal','start_date'
+        'user_id',
+        'email_address',
+        'job_title',
+        'description',
+        'responsibilities',
+        'requirements',
+        'minSal',
+        'maxSal',
+        'start_date',
+        'deadline',
     ];
     public function user()
     {

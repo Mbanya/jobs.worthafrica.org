@@ -2,75 +2,76 @@
 <title>Home</title>
 @section('assets')
     <link class="main-stylesheet" href="{{asset('css/pages1.css')}}" rel="stylesheet" type="text/css"/>
-    <link class="main-stylesheet" href="{{asset('css/pages-icons.css')}}" rel="stylesheet" type="text/css"/>
+    {{--<link class="main-stylesheet" href="{{asset('css/pages-icons.css')}}" rel="stylesheet" type="text/css"/>--}}
     <link class="main-stylesheet" href="{{asset('css/swiper.css')}}" rel="stylesheet" type="text/css"/>
-    <link class="main-stylesheet" href="{{asset('css/pace-theme-flash.css')}}" rel="stylesheet" type="text/css"/>
+    {{--<link class="main-stylesheet" href="{{asset('css/pace-theme-flash.css')}}" rel="stylesheet" type="text/css"/>--}}
 @endsection
 
 @section('navigation')
-
     @endsection
-@section('cover')
-<!-- ========== Hero Cover ========== -->
-<div id="home" class="landing-hero">
-    <div class="bg-overlay">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="container">
-                    <div class="row">
 
-                        <!-- Heading -->
-                        <div class="col-md-5 heading-wrapper wow fadeInLeft" data-wow-duration="1.5s">
-                            <h1 class="lead">Job Filter</h1>
-                            <h4 class="h-alt subheading">Create Value. Save Money</h4>
-                            <p style="color: white">JOBS FILTER is a total break through! In 3 simple steps
-                                JOB FILTER app guarantees 80% savings of what it traditionally costs
-                                HR teams to filter hundreds and thousands of job applications you receive
-                                when you advertise for a job. </p>
-                            <a href="#How it works" class="cta-btn">Learn more</a>
-                        </div>
 
-                        <!-- Call to action Form -->
-                        <div class="col-md-offset-3 col-md-4 form-wrapper wow fadeInRight" data-wow-duration="1.5s">
-                            <form action="{{route('jflogin')}}" method="POST" role="form" class="form-group">
-                                @if(session('error'))
-                                    <div class="alert alert-danger" >
-                                        {{session('error')}}
-                                    </div>
-                                @endif
-                                {{csrf_field()}}
+
+<!-- ========== Features ========== -->
+@section('content')
+    <!-- ========== Hero Cover ========== -->
+    <div id="home" class="landing-hero">
+        <div class="bg-overlay">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="container">
+                        <div class="row">
+
+                            <!-- Heading -->
+                            <div class="col-md-5 heading-wrapper wow fadeInLeft" data-wow-duration="1.5s">
+                                <h1 class="lead">Job Filter</h1>
+                                <h4 class="h-alt subheading">Create Value. Save Money</h4>
+                                <p style="color: white">JOBS FILTER is a total break through! In 3 simple steps
+                                    JOB FILTER app guarantees 80% savings of what it traditionally costs
+                                    HR teams to filter hundreds and thousands of job applications you receive
+                                    when you advertise for a job. </p>
+                                <a href="#How it works" class="link text-white">Learn more</a>
+                            </div>
+
+                            <!-- Call to action Form -->
+                            <div class="col-md-offset-3 col-md-4 form-wrapper wow fadeInRight" data-wow-duration="1.5s">
+                                <form action="{{route('jflogin')}}" method="POST" role="form" class="form-group">
+                                    @if(session('error'))
+                                        <div class="alert alert-danger" >
+                                            {{session('error')}}
+                                        </div>
+                                    @endif
+                                    {{csrf_field()}}
                                     <input type="email"  name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter your email" required autofocus>
                                     @if ($errors->has('email'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                            @endif
-                        <!-- Password -->
-                            <input type="password" name="password"  class="form-control" placeholder="Enter your password" required autofocus>
+                                    @endif
+                                <!-- Password -->
+                                    <input type="password" name="password"  class="form-control" placeholder="Enter your password" required autofocus>
 
-                            @if ($errors->has('password'))
-                                <span class="help-block">
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                            @endif
+                                    @endif
 
-                            <input class="btn-block btn-ghost-light" type="submit" value="Login">
-                            </form>
-                        </div>
+                                    <input class="btn-block btn-ghost-light" type="submit" value="Login">
+                                        <span><a href="{{route('account')}}" class="cta-btn">No Account? Register here</a></span>
 
-                    </div><!-- / .row -->
-                </div><!-- / .container -->
-            </div><!-- / .hero-content -->
-        </div><!-- / .hero-wrapper -->
+                                </form>
 
+                            </div>
 
-    </div><!-- / .bg-overlay -->
-</div><!-- / .main-op -->
-    @endsection
+                        </div><!-- / .row -->
+                    </div><!-- / .container -->
+                </div><!-- / .hero-content -->
+            </div><!-- / .hero-wrapper -->
 
 
-<!-- ========== Features ========== -->
-@section('content')
+        </div><!-- / .bg-overlay -->
+    </div><!-- / .main-op -->
     <section id="How it works" class="container ft-steps-numbers">
         <div class="row section">
 
@@ -108,8 +109,8 @@
 
 
     <!-- ========== FAQS ========== -->
-    <section class="p-t-55 bg-success-light scroll-x-hidden" data-pages-bg-image="{{url('../images/284_Samburu-Plains_2560x1440.jpg')}}" data-pages="parallax">
-        <div class="container p-b-100" id="faq">
+    <section class="p-t-55 bg-success-light scroll-x-hidden " style="margin: auto;" data-pages-bg-image="{{url('../images/284_Samburu-Plains_2560x1440.jpg')}}" data-pages="parallax"  >
+        <div class="container p-b-100">
             <h5 class="block-title text-white ">FAQ'S</h5>
             <div class="row p-b-65 p-t-55">
                 <div class="col-sm-6">
@@ -121,7 +122,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
                                 </div>
                             </div>
                             <h3 class="text-white no-margin lh-large">100%</h3>
@@ -130,7 +131,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
                                 </div>
                             </div>
                             <h3 class="text-white no-margin lh-large">24hrs</h3>
@@ -139,7 +140,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
                                 </div>
                             </div>
                             <h3 class="text-white no-margin lh-large">10hrs</h3>
@@ -148,7 +149,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="progress progress-small transparent-white m-t-15">
-                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                <div class="progress-bar progress-bar-white" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
                                 </div>
                             </div>
                             <h3 class="text-white no-margin lh-large">100%</h3>
@@ -163,8 +164,8 @@
     </section>
     <section class="p-b-55 p-t-25">
 
-        <div class="swiper-container" id="testimonials_slider">
-            <div class="swiper-wrapper">
+        <div class="swiper-container " id="testimonials_slider">
+            <div class="swiper-wrapper" style="margin-top: -75px">
 
                 <div class="swiper-slide">
                     <div class="container text-left">
@@ -217,14 +218,15 @@
             </div>
 
 
-            <div class="container">
+            <div class="container" style="margin-top: -108px ">
                 <div class="swiper-pagination relative pull-left"></div>
             </div>
         </div>
 
     </section>
+
     <!-- ========== Footer ========== -->
-    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker  ">
+    <section class="p-b-55 p-t-75 xs-p-b-20 bg-master-darker">
 
         <div class="container">
             <div class="row">
@@ -236,7 +238,7 @@
                     <ul class="no-style">
                         <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
-                        <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                        <li class="m-b-5 no-padding"><a href="http://nexus.worthafrica.org/" class="link text-white ">Nexus</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
                     </ul>
                 </div>
@@ -267,11 +269,10 @@
 
 @endsection
 @section('scripts')
-
-    <script type="text/javascript" src="{{ asset('js/swiper.jquery.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-1.11.1.mim.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/pace.mim.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/custom.js')}}"></script>
+    {{--<script type="text/javascript" src="{{ asset('js/jquery-1.11.1.min.js')}}"></script>--}}
+    <script type="text/javascript" src="{{ asset('js/swiper.jquery.min.js')}}"></script>
+    {{--<script type="text/javascript" src="{{ asset('js/pace.min.js')}}"></script>--}}
 
 
 @endsection

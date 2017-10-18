@@ -30,7 +30,6 @@ class CreateFlexJobsTable extends Migration
             $table->string('job_type');
             $table->timestamps();
 
-            $table->index('user_id');
         });
     }
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TOR;
+use App\Tor;
 
 class TorController extends Controller
 {
@@ -35,7 +35,7 @@ class TorController extends Controller
      */
     public function store(Request $request)
     {
-        if (TOR::create($request->all()))
+        if (Tor::create($request->all()))
         return redirect('/success')->with(['message' => 'Your TOR was received we shall get back to you shortly']);
     else {
         return redirect()->back()->with([

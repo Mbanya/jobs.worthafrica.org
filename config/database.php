@@ -52,7 +52,29 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
+
         ],
+        'worthafrica'=>[
+            'read' => [
+                'host' => 'localhost',
+            ],
+            'write' => [
+                'host' => 'localhost'
+            ],
+            'driver' => 'mysql',
+            'host' => '188.40.53.146',
+            'port' => '3306',
+            'database' => 'wortha_internships',
+            'username' =>'wortha',
+            'password' => 'Kenya.2016',
+            'unix_socket' => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
+        ],
+
 
         'pgsql' => [
             'driver' => 'pgsql',

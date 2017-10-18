@@ -13,7 +13,7 @@ $(document).ready(function () {
         speed: 1000,
         autoplay: 2000
     });
-    var contentSlider = new Swiper('#inner-conent-slider', {
+    var contentSlider = new Swiper('#inner-content-slider', {
         paginationClickable: true,
         speed: 1000,
         effect: 'fade',

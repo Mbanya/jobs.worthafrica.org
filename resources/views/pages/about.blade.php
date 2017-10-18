@@ -36,7 +36,7 @@
           <div class="row section">
             
             <header class="sec-heading">
-              <img src="{{ url('images/logo-large-dark.png')}}" alt="WorthJobs">
+              <img src="{{ url('worthjobs.png')}}" alt="WorthJobs">
               <h2 class="hidden">About Us</h2>
             </header>
 
@@ -241,7 +241,7 @@
                 <ul class="no-style">
                   <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
                   <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
-                  <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                    <li class="m-b-5 no-padding"><a href="http://nexus.worthafrica.org/" class="link text-white ">Nexus</a></li>
                   <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
                 </ul>
               </div>

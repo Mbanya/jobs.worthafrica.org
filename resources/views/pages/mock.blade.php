@@ -25,10 +25,12 @@
                     <b>Get Prepared </b>
                   </span>
                     </h1>
+                    <a href="#mockinterviewprocess" class="btn btn-light wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Learn More</a>
+
                     <div class="heading-block align-center centered-block">
                         <div class="signup-wrapper align-center">
                             <div class="row">
-                                <form class="form form-inline form-register form-register-small"  role="form" method="POST" action="/seekers">
+                                <form class="form form-inline form-register form-register-small"  role="form" method="POST" action="/seekers" style="display: none">
                                     {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="select-form" style="color: white;">Service Type</label>
@@ -218,7 +220,7 @@
                     <ul class="no-style">
                         <li class="m-b-5 no-padding"><a href="{{route('employer')}}" class="link text-white ">Flex Hire</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white ">Flex Jobs</a></li>
-                        <li class="m-b-5 no-padding"><a href="{{route('consult_hub')}}" class="link text-white ">Consult hub</a></li>
+                        <li class="m-b-5 no-padding"><a href="http://nexus.worthafrica.org/" class="link text-white ">Nexus</a></li>
                         <li class="m-b-5 no-padding"><a href="{{route('job_seeker')}}" class="link text-white">Mock Interviews</a></li>
                     </ul>
                 </div>

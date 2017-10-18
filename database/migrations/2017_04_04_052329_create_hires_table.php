@@ -15,7 +15,7 @@ class CreateHiresTable extends Migration
     {
         Schema::create('hires', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->string('organisation_name');
             $table->string('organisation_size');
             $table->string('organisation_type');
@@ -33,7 +33,6 @@ class CreateHiresTable extends Migration
             $table->string('job_type');
             $table->timestamps();
 
-            $table->index('user_id');
         });
     }
 

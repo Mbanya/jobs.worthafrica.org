@@ -183,11 +183,9 @@
                                                     <input type="submit" class="btn pull-left" value="Submit Profile">
                                                 </div>
                                             </div>
-
-                                        </div>
                                     </ol>
                                 </form>
-
+                                        </div>
                             </div><!-- / .col-md-10 -->
                         </div><!-- / .row -->
                     </div><!-- / .container -->

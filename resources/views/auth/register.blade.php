@@ -2,7 +2,7 @@
 
 @section('assets')
     <link class="main-stylesheet" href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css"/>
-<title>Registration|Job Seeker</title>
+<title>Registration | Job Seeker</title>
 @endsection
 @section('navigation')
 @endsection
@@ -48,47 +48,51 @@
                                         <div class="form-register">
                                             <form action="{{ route('register') }}" role="form" method="POST">
                                                 {{ csrf_field() }}
-                                                @if(session('error'))
-                                                    <div class="alert alert-danger">
-                                                        {{ session('error') }}
-                                                    </div>
-                                            @endif
+                                                {{--@foreach($errors->all() as $error)--}}
+                                                    {{--<li class="text-danger">{{ $error }}</li>--}}
+                                                {{--@endforeach--}}
                                             {{--@foreach($errors as $error)--}}
                                             {{--<div class="alert alert-danger">--}}
                                             {{--{{$error}}--}}
                                             {{--</div>--}}
                                             {{--@endforeach--}}
                                             <!-- First Name -->
-                                                <div class="form-group col-md-6 no-gap-left">
-                                                    <input type="text"  class="form-control" name="first_name" placeholder="First Name" required autofocus>
+                                                <div class="form-group col-md-6 no-gap-left {{$errors->has('first_name') ? 'has-error' : ''}}">
+                                                    <input type="text"  class="form-control" value="{{old('first_name')}}" name="first_name" placeholder="First Name" required autofocus>
                                                     <label for="name-login-1">First Name</label>
+                                                    <span class="text-danger">{{$errors->first('first_name')}}</span>
                                                 </div>
                                                 <!-- Last name -->
-                                                <div class="form-group col-md-6 no-gap-right">
-                                                    <input type="text" name="last_name"  class="form-control" placeholder="Last Name" required autofocus>
+                                                <div class="form-group col-md-6 no-gap-right {{$errors->has('last_name') ? 'has-error' : ''}}">
+                                                    <input type="text" name="last_name" value="{{old('last_name')}}"  class="form-control" placeholder="Last Name" required autofocus>
                                                     <label for="last-name-signup-1">Last Name</label>
+                                                    <span class="text-danger">{{$errors->first('last_name')}}</span>
                                                 </div>
                                                 <!-- Email -->
-                                                <div class="form-group">
-                                                    <input type="email"  name="email" class="form-control" placeholder="Enter your email" required autofocus>
+                                                <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
+                                                    <input type="email"  name="email" value="{{old('email')}}" class="form-control" placeholder="Enter your email" required autofocus>
                                                     <label for="email-signup-1">Email</label>
+                                                    <span class="text-danger">{{$errors->first('email')}}</span>
 
                                                 </div>
                                                 <!-- phone -->
-                                                <div class="form-group">
-                                                    <input type="tel"  class="form-control" name="phone_number" placeholder="Enter your phone number" required autofocus>
+                                                <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
+                                                    <input type="tel"  class="form-control" value="{{old('phone_number')}}" name="phone_number" placeholder="Enter your phone number" required autofocus>
                                                     <label for="phone-signup-1">Phone</label>
+                                                    <span class="text-danger">{{$errors->first('phone_number')}}</span>
 
                                                 </div>
                                                 <!-- Password -->
-                                                <div class="form-group">
+                                                <div class="form-group {{$errors->has('password') ? 'has-error' : ''}}">
                                                     <input type="password" name="password"  class="form-control" placeholder="Enter a password" required autofocus>
                                                     <label for="pass-signup-1">Password</label>
+                                                    <span class="text-danger">{{$errors->first('password')}}</span>
                                                 </div>
                                                 <!-- Password -->
-                                                <div class="form-group ">
-                                                    <input type="password" name="confirm_password"  class="form-control" placeholder="Enter a password" required autofocus>
+                                                <div class="form-group {{$errors->has('password') ? 'has-error': ''}}">
+                                                    <input type="password" name="password_confirmation"  class="form-control" placeholder="Enter a password" required autofocus>
                                                     <label for="pass-signup-1">Confirm Password</label>
+                                                    <span class="text-danger">{{$errors->first('password')}}</span>
                                                 </div>
                                                 <!-- Submit -->
                                                 <input type="submit" value="Register" class="btn">

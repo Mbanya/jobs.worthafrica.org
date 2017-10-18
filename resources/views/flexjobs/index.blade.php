@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('header')
-    <title>Flex Jobs</title>
 @endsection
 @section('navigation')
+    <title>Flex Jobs</title>
 @endsection
 
 @section('cover')

@@ -59,7 +59,7 @@
             <span class="icon-bar"></span>
         </button>
         <!-- Logo -->
-        <a class="navbar-brand" href="{{url('index')}}"> <img class="navbar-logo" src="{{('image.png')}}"  alt="Logo"></a>
+        <a class="navbar-brand" href="{{url('index')}}"> <img class="navbar-logo" src="{{ url('worthjobs.png')}}" width="190"  alt="WorthJobs"></a>
     </div>
 
     <!-- Navbar Links -->
@@ -67,28 +67,37 @@
         <ul class="nav navbar-nav">
             <li><a href="{{route('index')}}">Home<span class="sr-only"></span></a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">
                     Services <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ route('employer') }}">Looking to Hire</a></li>
-                    <li><a href="{{ route('job_seeker') }}">Looking for a Job</a></li>
-                    <li><a href="{{ route('employer') }}">Flex Hire</a></li>
-                    <li><a href="{{ route('job_seeker') }}">Flex Jobs</a></li>
-                    <li><a href="{{ route('consult_hub') }}">Consult Hub</a></li>
-                    <li><a href="{{ route('job_seeker') }}">Mock Interviews</a></li>
+                <ul class="dropdown-menu">
+                    <li><a href="{{route('organisation')}}">Job Filter</a></li>
+                    <li><a href="{{ route('organisation') }}">Find Talent</a></li>
+                    <li><a href="{{ route('seeker') }}">Find a Job</a></li>
+                    <li><a href="{{ route('seeker') }}">Mock Interviews</a></li>
+                    <li><a href="http://nexus.worthafrica.org/">Nexus</a></li>
+                    <li><a href="{{ route('board') }}">Job Board</a></li>
                 </ul>
             </li>
             <li><a href="{{route('pricing')}}">Pricing<span class="sr-only"></span></a></li>
             <li><a href="{{url('/#faq')}}">FAQ'S<span class="sr-only"></span></a></li>
             <li><a href="{{route('about')}}">About Us<span class="sr-only"></span></a></li>
             <li><a href="{{url('/contact')}}">Contact Us<span class="sr-only"></span></a></li>
-            @if (Sentinel::check())
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{Sentinel::getUser()->organisation_name }} <span class="caret"></span>
-                    </a>
+            <li class="dropdown">
+                @if(Sentinel::check())
+                    @if(Sentinel::getUser()->inRole('individual'))
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->first_name. ' '. last_name }} <span class="caret"></span>
+                        </a>
+                    @elseif(Sentinel::getUser()->inRole('organisation'))
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->organisation_name }} <span class="caret"></span>
+                        </a>
+                    @else
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->organisation_name }} <span class="caret"></span>
+                        </a>
+                    @endif
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ route('logout') }}"
@@ -101,34 +110,21 @@
                             </form>
                         </li>
                         {{--<li>--}}
-                            {{--<a href="/profile/{{Sentinel::getUser()->email}}">My profile</a>--}}
+                        {{--<a href="{{Sentinel::getUser()->getUserLoginName()}}">My profile</a>--}}
                         {{--</li>--}}
-
-                        <li>
-                            <a href="/flexhire/create">Post Flex hire</a>
-                        </li>
-                        <li>
-                            <a href="/hire/create">Post Job Profile</a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="/flexhire">List of flex hire Jobs</a>
-                        </li>
-                        <li>
-                            <a href="/hire">List of Jobs</a>
-                        </li>
                     </ul>
-
             @else
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        Register<span class="caret"></span>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Register <span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu">
                         <li><a href="{{ route('organisation_register') }}">Employer Registration</a></li>
                         <li><a href="{{ route('register') }}">Job Seeker Registration</a></li>
+                        <li><a href="{{ route('jobfilterregister') }}">Register for Job Filter</a></li>
                     </ul>
+
             @endif
         </ul><!-- / .nav .navbar-nav -->
     </div><!--/.navbar-collapse -->

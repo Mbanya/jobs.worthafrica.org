@@ -15,12 +15,11 @@ class CreateTORsTable extends Migration
     {
         Schema::create('tors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->longText('summary');
             $table->date('start_date');
             $table->timestamps();
 
-            $table->index('user_id');
         });
 
 

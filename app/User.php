@@ -37,41 +37,40 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return static::whereEmail($email)->first();
     }
 
-    public function FlexJob()
+    public function FlexJobs()
     {
-        return $this->hasOne(FlexJob::class,'user_id');
+        return $this->hasOne(FlexJob::class);
     }
 
-    public function Job()
+    public function Jobs()
     {
-        return $this->hasOne(Job::class,'user_id');
+        return $this->hasOne(Job::class);
     }
 
-    public function Consultant()
+    public function Consultants()
     {
-        return $this->hasOne(Consultant::class,'user_id');
+        return $this->hasOne(Consultant::class);
     }
 
-    public function Hire()
+    public function hires()
     {
-        return $this->hasMany(Hire::class,'user_id');
+        return $this->hasMany(Hire::class);
     }
-    public function Flexhire()
+    public function Flexhires()
     {
-        return $this->hasMany(Hire::class,'user_id');
+        return $this->hasMany(Hire::class);
     }
     public function TOR()
     {
-        return $this->hasMany(TOR::class,'user_id');
+        return $this->hasMany(Tor::class);
     }
-    public function Mock()
+    public function Mocks()
     {
-        return $this->hasMany(Mock::class,'user_id');
+        return $this->hasMany(Mock::class);
     }
     public function posts()
     {
-        return $this->hasMany(Post::class, 'user_id');
+        return $this->hasMany(Post::class);
     }
-
 
 }

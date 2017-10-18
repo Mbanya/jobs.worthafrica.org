@@ -61,12 +61,7 @@ class FlexJobController extends Controller
             $flexjob->save();
             return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Request was received. Our Team will get back to You.']);
         }
-//        if (FlexJob::create($request->all()))
-//            return redirect(route('flexjobs.index'))->with(['message' => 'Your Flex job Profile was received Thank you for registering with us']);
-//        else {
-//            return redirect()->back()->with([
-//                'error' => 'There was a problem storing your job kindly try again.']);
-//        }
+//
     /**
      * Display the specified resource.
      *

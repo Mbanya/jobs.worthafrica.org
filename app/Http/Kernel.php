@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'individual'=>\App\Http\Middleware\IndividualMiddleware::class,
         'visitors'=>\App\Http\Middleware\VisitorsMiddleware::class,
-        'organisation'=>\App\Http\Middleware\OrganisationMiddleware::class
+        'organisation'=>\App\Http\Middleware\OrganisationMiddleware::class,
+        'jobfilter'=>\App\Http\Middleware\JobFilterMiddleware::class
     ];
 }

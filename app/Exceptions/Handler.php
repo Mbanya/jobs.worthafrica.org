@@ -2,9 +2,12 @@
 
 namespace App\Exceptions;
 
+use function app;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use function response;
 
 class Handler extends ExceptionHandler
 {
@@ -84,5 +87,17 @@ class Handler extends ExceptionHandler
 
         return parent::convertExceptionToResponse($e);
 
+    }
+
+    protected function EntryAlreadyExists(Exception $e)
+    {
+        $user = User::all();
+
+        $exists = app(User::class)->first($user->id);
+         return response()
+             ->json([
+                 'error'=>'User already exists',
+                 'exist'=> $exists
+             ]);
     }
 }

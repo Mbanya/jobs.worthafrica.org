@@ -3023,13 +3023,15 @@ fieldset[disabled] .form-control:hover {
 }
 
 .navbar-trans .navbar-logo {
-  content: url(../images/);
+  /*content: url(../images/);*/
+  padding-top: 15px;
   max-width: 114px;
-  max-height: 23px;
+  max-height: 50px;
+
 }
 
 .navbar-trans .navbar-logo-dark {
-  content: url(../images/);
+  /*content: url(../images/);*/
   max-width: 114px;
   max-height: 23px;
 }
@@ -3077,12 +3079,13 @@ fieldset[disabled] .form-control:hover {
 }
 
 .navbar-small .navbar-header {
-  margin-top: 0;
+  margin-top: 10px;
   padding: 0;
 }
 
 .navbar-small .navbar-header .navbar-brand {
   padding: 9px 0;
+
 }
 
 .navbar-small .navbar-nav {

@@ -33,8 +33,6 @@ class CreateFlexHiresTable extends Migration
             $table->string('job_type');
             $table->date('start_date');
             $table->date('end_date');
-
-            $table->index('user_id');
             $table->timestamps();
         });
     }

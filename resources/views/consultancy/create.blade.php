@@ -1,6 +1,7 @@
 @extends('layouts.forms_layout')
+<title>TOR Assignment</title>
 @section('header')
-    <title>TOR Assignment</title>
+
 @endsection
 @section('navigation')
 @endsection
@@ -19,7 +20,7 @@
 
                 <ol class="col-md-6 text-right breadcrumb">
                     <li><a href="{{route('index')}}">Home</a></li>
-                    <li><a href="{{route('consult_hub')}}">Consult_hub</a></li>
+                    <li><a href="{{route('consult_hub')}}">Nexus</a></li>
                     <li class="active">TOR</li>
                 </ol>
 
@@ -84,8 +85,8 @@
                                                 <label for="date-form">Expected Start Date</label>
                                             </div>
                                             <div class="form-group col-md-6 no-gap-right">
-                                                <label>TOR document</label>
-                                                <input type="file" class="form-control" name="tor">
+                                                <input type="file" class="form-control" id="tor" name="tor">
+                                                        <label for="tor">TOR document</label>
                                                 <p class="help-block">Only PDF &.DOCX allowed</p>
                                             </div>
                                             <div class="form-group">

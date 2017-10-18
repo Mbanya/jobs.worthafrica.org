@@ -1,10 +1,9 @@
 @extends('layouts.organisation_layout')
 @section('header')
-    <title>Flex Hire</title>
     <link class="main-stylesheet" href="{{asset('/css/pages.css')}}" rel="stylesheet" type="text/css"/>
-
 @endsection
 @section('navigation')
+    <title>Flex Hire</title>
 @endsection
 
 @section('cover')

@@ -21,4 +21,16 @@ class ActivationController extends Controller
           return redirect('/login')->with(['error_activate'=>'Your Account was not activated kindly check your email to activate it.']);
         }
   }
+    public function jobfilter ($email,$activationCode)
+    {
+        $user= User:: whereEmail($email)->first();
+        $sentinelUser =Sentinel::findById($user->id);
+
+        if (Activation::complete($sentinelUser,$activationCode)){
+            return redirect('/filter_login')->with(['message'=>'Your Account has been Activated.']);
+        }else{
+
+            return redirect('/filter_login')->with(['error_activate'=>'Your Account was not activated kindly check your email to activate it.']);
+        }
+    }
 }

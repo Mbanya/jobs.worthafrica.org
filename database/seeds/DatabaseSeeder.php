@@ -12,18 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       /* Model::unguard();
+        $this->call(RolesSeeder::class);
 
-         $this->call('RoleSeeder');
-         $this->call('UserSeeder');
-
-        Model::reguard();*/
-
-//       factory(App\Flexhire::class, 100)->create();
-//       factory(App\Hire::class, 100)->create();
-//       factory(App\Post::class, 100)->create();
-        factory(App\Job::class,100)->create();
-        factory(App\FlexJob::class,100)->create();
-        factory(App\Mock::class,100)->create();
     }
 }

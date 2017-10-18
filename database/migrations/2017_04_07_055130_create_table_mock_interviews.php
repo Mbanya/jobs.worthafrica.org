@@ -15,7 +15,7 @@ class CreateTableMockInterviews extends Migration
     {
         Schema::create('mocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -24,8 +24,6 @@ class CreateTableMockInterviews extends Migration
             $table->string('major')->nullable();
             $table->date('date_interview')->nullable();
             $table->timestamps();
-
-            $table->index('user_id');
         });
     }
 

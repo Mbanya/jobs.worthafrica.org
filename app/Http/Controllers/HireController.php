@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Hire;
 use Sentinel;
 use Illuminate\Http\Request;
+use function view;
 
 class HireController extends Controller
 {
@@ -36,36 +37,35 @@ class HireController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+        'organisation_name'=>'required',
+        'organisation_size'=>'required',
+        'organisation_type'=>'required',
+        'Physical_Address'=>'required',
+        'email'=>'required|email',
+        'key_qualification'=>'required|max:255',
+        'Qualification_Description'=>'required|max:255',
+        'experience'=>'required',
+        'Responsibilities'=>'required|max:255',
+        'skills'=>'required|max:255',
+        'minSal'=>'numeric|nullable',
+        'maxSal'=>'numeric|nullable',
+        'start_date'=>'required|date'
+    ]);
+
+        $hire = new Hire($request->all());
+
+        $request->user()
+            ->hires()->save($hire);
+
       if (Hire::create($request->all())){
           return redirect('/success')->with('message','Your Job posting was Successfull Thank You for your continued use of this Service');
 
-      }else{
+      }else {
           return redirect()->back()->with([
-              'error'=>'There was a problem storing your job kindly try again.']);
-
+              'error' => 'There was a problem storing your job kindly try again.']);
       }
-        /*$hire= new Hire($request->all());
-
-        $user = Sentinel::getUser()->getUserId();*/
-
-        /*'organisation_name' == $request->organisation_name;
-        'organisation_size' == $request->organisation_size;
-        'organisation_type' == $request->organisation_type;
-        'Physical_Address' == $request->Physical_Address;
-        'email' == $request ->email;
-        'key_qualification' == $request->key_qualification;
-        'Qualification_Description' == $request->Qualification_Description;
-        'experience' == $request->experience;
-        'Responsibilities' == $request->Responsibilities;
-        'skills' == $request->skills;
-        'minSal' == $request->minSal;
-        'maxSal' == $request->maxSal;
-        'start_date' == $request->start_date;*/
-
-            /*$user->Hire()->save($hire);
-
-            return redirect('/success')->with('message','Your Job posting was Successfull Thank You
-            for your continued use of this Service');*/
 
 
     }
@@ -120,5 +120,9 @@ class HireController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pricing(){
+        return view('hire.pricing');
     }
 }

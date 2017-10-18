@@ -38,7 +38,7 @@
 
 
 
-  <!--[if lt IE 8]>
+<!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
@@ -57,7 +57,7 @@
             <span class="icon-bar"></span>
         </button>
         <!-- Logo -->
-        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="{{asset('worthjobs.png')}}" style=" max-width:190px;" alt="Logo"></a>
+        <a class="navbar-brand" href="{{route('index')}}"><img class="navbar-logo" src="{{ url('worthjobs.png')}}" width="190"  alt="WorthJobs"></a>
     </div>
 
     <!-- Navbar Links -->
@@ -73,18 +73,29 @@
                     <li><a href="{{ route('organisation') }}">Find Talent</a></li>
                     <li><a href="{{ route('seeker') }}">Find a Job</a></li>
                     <li><a href="{{ route('seeker') }}">Mock Interviews</a></li>
-                    <li><a href="{{ route('consult_hub') }}">ConsultHub</a></li>
+                    <li><a href="http://nexus.worthafrica.org/">Nexus</a></li>
+                    <li><a href="{{ route('board') }}">Job Board</a></li>
                 </ul>
             </li>
             <li><a href="{{route('pricing')}}">Pricing<span class="sr-only"></span></a></li>
             <li><a href="{{url('/#faq')}}">FAQ'S<span class="sr-only"></span></a></li>
             <li><a href="{{route('about')}}">About Us<span class="sr-only"></span></a></li>
             <li><a href="{{url('/contact')}}">Contact Us<span class="sr-only"></span></a></li>
-                <li class="dropdown">
-                    @if(Sentinel::check())
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{Sentinel::getUser()->organisation_name}} <span class="caret"></span>
-                    </a>
+            <li class="dropdown">
+                @if(Sentinel::check())
+                    @if(Sentinel::getUser()->inRole('individual'))
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->first_name. ' '. last_name }} <span class="caret"></span>
+                        </a>
+                    @elseif(Sentinel::getUser()->inRole('organisation'))
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->organisation_name }} <span class="caret"></span>
+                        </a>
+                    @else
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{Sentinel::getUser()->organisation_name }} <span class="caret"></span>
+                        </a>
+                    @endif
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ route('logout') }}"
@@ -97,19 +108,19 @@
                             </form>
                         </li>
                         <li>
-                            <a href="{{Sentinel::getUser()->getUserLoginName()}}">My profile</a>
+                            <a href="{{route('dashboard.index')}}">My Dashboard</a>
                         </li>
                     </ul>
             @else
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                       Register <span class="caret"></span>
+                        Register <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('organisation_register') }}">Employer Registration</a></li>
                         <li><a href="{{ route('register') }}">Job Seeker Registration</a></li>
-                        <li><a href="{{ route('register') }}">ConsultHub Registration</a></li>
+                        <li><a href="{{ route('jobfilterregister') }}">Register for Job Filter</a></li>
                     </ul>
 
             @endif
